@@ -1,3 +1,100 @@
+#Kapitel 1
+##Was sind esoterische Programmiersprachen?
+Esoterische Programmiersprachen sind Programmiersprachen, die nicht zur Verwendung für kommerzielle Software entwickelt worden sind, sondern um mit unkonventionellem Sprachdesign zu experimentieren oder als eine "Witz-Sprache". Esoterische Programmiersprachen werden von kleinen Online-Communities entwickelt und verwendet. Mit esoterischen Programmiersprachen werden zum Beispiel mathematische Probleme gelöst, oder für minimalistische Spiele verwendet. Die meißten esoterischen Programmiersprachen können in fünf verschiedene Kategorien eingeteilt werden.
+
+###Minimalismus
+Esoterische Programmiersprachen, die aus den wenigsten möglichen Befehlen bestehen. Eine minimalistische Sprache, die Turing-Complete <!--TODO: Turing-Complete erklären--> ist, wird "Turing-Tarpit" genannt.
+Beispiele: Brainfuck, Whitespace, OISC
+
+###Neues Konzept
+Sprachen, die alternative wege des Sprachdesigns erforschen.
+Beispiele: Befunge, Unlamda
+
+###Bizarrheit
+Das Ziel dieser Sprachen ist es, bizarr, anders, oder schwer zu verwenden zu sein.
+Beispiele: INTERCAL, MALBOLGE
+
+###Thematik
+Sprachen, die zu einem bestimmten Thema entwickelt worden sind.
+Beispiele: Shakespeare, Chef, Magicard!
+
+##Witzsprache
+Eine Sprache, die keinen besonderen Zweck hat, sondern nur als Witz entwickelt worden ist.
+Beispiele: l33t, HQ9+
+
+##Ausgewählte Sprachen
+###INTERCAL
+INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programiersprach. INTERCAL steht für *Compiler Language With No Pronounceable Acronym*. Das Ziel der Sprache ist es, so wenige Ähnlichkeiten mit anderen normalen Programmiersprachen zu haben. Ein INTERCAL Program besteht aus einer Liste von Befehlen.
+```
+1:  DO ,1 <- #13
+2:  PLEASE DO ,1 SUB #1 <- #238
+3:  DO ,1 SUB #2 <- #108
+4:  DO ,1 SUB #3 <- #112
+5:  DO ,1 SUB #4 <- #0
+6:  DO ,1 SUB #5 <- #64
+7:  DO ,1 SUB #6 <- #194
+8:  DO ,1 SUB #7 <- #48
+9:  PLEASE DO ,1 SUB #8 <- #22
+10: DO ,1 SUB #9 <- #248
+11: DO ,1 SUB #10 <- #168
+12: DO ,1 SUB #11 <- #24
+13: DO ,1 SUB #12 <- #16
+14: DO ,1 SUB #13 <- #162
+15: PLEASE READ OUT ,1
+16: PLEASE GIVE UP
+```
+Einer der Wichtigsten Unterschiede zu normalen Programmiersprachen ist in diesem "Hello World" Beispiel sichtbar. Der Befehl PLEASE wird verwendet, um die Höflichkeit des Programmierers zu testen. Falls weniger als 1/3 der Befehle mit PLEASE beginnen, läuft das Programm nicht.
+
+###BrainFuck
+BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein BrainFuck Programm manipuliert einen Array (auch Memory Tape genannt), mithilfe von 8 Befehlen.
+
+![Memory Tape](MemTape.png)
+
+
+|Befehl  | Beschreibung |
+|--------|--------------|
+|   >    | Bewegt den Pointer nach rechts |
+|   <    | Bewegt den Pointer nach links  |
+|   +    | Erhöht den Wert an dem Pointer |
+|   -    | Verringert den Wert an dem Pointer |
+|   .    | Druckt den Wert an dem Pointer |
+|   ,    | Speichert einen eingegebenen Wert and dem Pointer |
+|   [    | Springt zum passenden ] im Programm, falls der Wert an dem Pointer 0 ist |
+|   ]    | Springt zum passenden [ im Programm, falls der Wert an dem Pointer 0 ist |
+
+
+```
+>>++++<---
+```
+
+![Memory Tape](BFProgram.png)
+
+
+```
+1:  ++++++++
+2:  [
+3:  >++++
+4:  [
+5:  >++>+++>+++>+
+6:  <<<<-
+7:  ]
+8:  >+>+>->>+
+9:  [
+10: <
+11: ]
+12: <-
+13: ]
+14: >>.>---.+++++++..+++.>>.
+15: <-.<.+++.
+16: ------.
+17: --------.
+18: >>+.>++.
+```
+
+
+###ArnoldC
+###Magicard!
+
 #BFJoust
 
 ##Das Spiel
@@ -59,6 +156,8 @@ Die meisten Bots werden nach dem Schema [Programmierer Nickname]_[Bot Name]. Mei
 
 
 
+[Esoterische Programmierprachen](http://esolangs.org/wiki/Esoteric_programming_language
+[INTERCAL](http://esolangs.org/wiki/INTERCAL)
 [BFJoust Regeln](https://esolangs.org/wiki/BF_Joust)
 [BFJoust Strategien](https://esolangs.org/wiki/BF_Joust_strategies)
 [BFJoust Webapp](http://zem.fi/bfjoust/)
