@@ -93,7 +93,27 @@ BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein
 
 
 ###ArnoldC
+Arnold C ist eine Programmiersprache, die aus Arnold Schwarzenegger Einzeilern besteht.
+
+```
+IT'S SHOWTIME
+TALK TO THE HAND "hello world"
+YOU HAVE BEEN TERMINATED
+```
+"IT'S SHOWTIME" und "YOU HAVE BEEN TERMINATED" signalisieren den Anfang bzw. das Ende eines ArnoldC Programms, und "TALK TO THE HAND" druckt einen Wert. Weitere Befehle:
+
+| Befehl                          | Bedeutung   |
+|---------------------------------|-------------|
+| NO PROBLEMO                     | True        |
+| I LIED                          | False       |
+| BECAUSE I'M GOING TO SAY PLEASE | If          |
+| BULLSHIT                        | Else        |
+| YOU HAVE NO RESPECT FOR LOGIC   | Endif       |
+| YOU ARE NOT YOU YOU ARE ME      | Equal To    |
+| DO IT NOW                       | Call Method |
+
 ###Magicard!
+Programme in Magicard! sind in Form von einer Anleitung für einen Kartentrick geschrieben.
 
 #BFJoust
 
@@ -158,6 +178,8 @@ Die meisten Bots werden nach dem Schema [Programmierer Nickname]_[Bot Name]. Mei
 
 [Esoterische Programmierprachen](http://esolangs.org/wiki/Esoteric_programming_language
 [INTERCAL](http://esolangs.org/wiki/INTERCAL)
+[BrainFuck](http://esolangs.org/wiki/BrainFuck)
+[ArnoldC](https://github.com/lhartikk/ArnoldC)
 [BFJoust Regeln](https://esolangs.org/wiki/BF_Joust)
 [BFJoust Strategien](https://esolangs.org/wiki/BF_Joust_strategies)
 [BFJoust Webapp](http://zem.fi/bfjoust/)

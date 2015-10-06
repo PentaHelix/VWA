@@ -1,0 +1,24 @@
+Inhalt
+
+1. Esoterischer Programmiersprachen
+	a. Was sind esoterische Programmiersprachen
+	b. Ausgeählte esoterische Programmiersprachen
+		1. Magicard!
+		2. ArnoldC
+		3. Chef
+
+	c. IDEs und Debugger für esoterische Programiersprachen
+
+2. Code Golf und Project Euler
+	a. Erklärung "Code Golf"
+	b. Project Euler Problem
+	c. Lösung
+
+3. Capture the Flag
+	a. Regeln
+	b. Strategien
+	c. Programm
+
+https://books.google.at/books?id=wgnSUL0zh5gC&pg=PA6&dq=Esoteric+Programming&hl=de&sa=X&ved=0CEwQ6AEwB2oVChMIgovHtteRxgIVp5hyCh0LfwBe#v=onepage&q=Esoteric%20Programming&f=false
+
+LaTex --> 
