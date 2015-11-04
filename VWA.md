@@ -18,7 +18,7 @@ Beispiele: INTERCAL, MALBOLGE
 Sprachen, die zu einem bestimmten Thema entwickelt worden sind.
 Beispiele: Shakespeare, Chef, Magicard!
 
-##Witzsprache
+###Witzsprache
 Eine Sprache, die keinen besonderen Zweck hat, sondern nur als Witz entwickelt worden ist.
 Beispiele: l33t, HQ9+
 
@@ -46,7 +46,7 @@ INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programier
 Einer der Wichtigsten Unterschiede zu normalen Programmiersprachen ist in diesem "Hello World" Beispiel sichtbar. Der Befehl PLEASE wird verwendet, um die Höflichkeit des Programmierers zu testen. Falls weniger als 1/3 der Befehle mit PLEASE beginnen, läuft das Programm nicht.
 
 ###BrainFuck
-BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein BrainFuck Programm manipuliert einen Array (auch Memory Tape genannt), mithilfe von 8 Befehlen.
+BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein BrainFuck Programm manipuliert einen Array (auch Memory"" Tape genannt), mithilfe von 8 Befehlen.
 
 ![Memory Tape](MemTape.png)
 
@@ -60,7 +60,7 @@ BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein
 |   .    | Druckt den Wert an dem Pointer |
 |   ,    | Speichert einen eingegebenen Wert and dem Pointer |
 |   [    | Springt zum passenden ] im Programm, falls der Wert an dem Pointer 0 ist |
-|   ]    | Springt zum passenden [ im Programm, falls der Wert an dem Pointer 0 ist |
+|   ]    | Springt zum passenden [ im Programm, falls der Wert an dem Pointer nicht 0 ist |
 
 
 ```
@@ -169,6 +169,21 @@ Die meisten Bots werden nach dem Schema [Programmierer Nickname]_[Bot Name]. Mei
 | quintopia_poke     | 21/42 (Unentschieden)                          |
 | guestbot_test      | 17/42 (Besiegt)                                |
 | ais523_shudderlock |  4/42 (Besiegt)                                |
+
+
+#Project Euler
+
+##Über das Projekt
+
+##Problem Nummer 2
+```
++>+<>>>>>>>>>>++++++++++++++
+[<<<<<<<<<<
+[>>+<<-]>>[<+<+>>-]<[>+>>+<<<-]>[<+>-]>>>[-]++<[->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
+[>+<-]>[<+<+>>-]<<<[>>+>>+<<<<-]>>[<<+>>-]>>>[-]++<[->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<<.>>>>>>+][-]<[-]<<<<<
+>>>>>>>>>>-]
+>>>>>>>>>>
+```
 
 ---
 1: Anfang bzw. Ende des Arrays
