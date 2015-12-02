@@ -162,7 +162,7 @@ Nachdem die Decoys gesetzt worden sind beginnt der Bot mit einem Rush, und reduz
 ###Ergebnisse gegen andere Bots
 Die meisten Bots werden nach dem Schema [Programmierer Nickname]_[Bot Name]. Mein Bot ist `helÿx_FightAndFlight` benannt.
 
-| Bot Name           | Ergebniss (gewonnene Spiele / Spiele insgesamt)|
+| Bot Name           | Ergebnis (gewonnene Spiele / Spiele insgesamt)|
 |--------------------|------------------------------------------------|
 | fizzie_tiny        | 40/42 (Sieg)                                   |
 | Deewiant_pendolino | 29/42 (Sieg)                                   |
@@ -174,16 +174,66 @@ Die meisten Bots werden nach dem Schema [Programmierer Nickname]_[Bot Name]. Mei
 #Project Euler
 
 ##Über das Projekt
+Projekt Euler bzw. Project Euler is eine Reihe von mathematischen und informatischen Herausforderungen. Um eine Herausforderung zu lösen werden fortgeschrittene mathematische Kenntnisse benötigt. Weiters werden Programmierkenntnisse unter Beweis gestellt. Bei *Code Golf* werden Herausforderungen in unterschiedlichen Programmiersprachen möglichst effizient gelöst. Speziell bei esoterischen Programmiersprachen existiert die zusätzliche Herausforderung, ein Problem mit den Limitationen der Sprache zu lösen.
+
+###*"Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics."*
+(https://projecteuler.net/)
 
 ##Problem Nummer 2
+Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist das Aufsuchen aller geraden Fibonacci-Zahlen die kleiner als 4 Millionen sind.
+
+
+##Das Programm
 ```
-+>+<>>>>>>>>>>++++++++++++++
-[<<<<<<<<<<
-[>>+<<-]>>[<+<+>>-]<[>+>>+<<<-]>[<+>-]>>>[-]++<[->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
-[>+<-]>[<+<+>>-]<<<[>>+>>+<<<<-]>>[<<+>>-]>>>[-]++<[->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<<.>>>>>>+][-]<[-]<<<<<
->>>>>>>>>>-]
->>>>>>>>>>
+1:  +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
+2:  [
+3:  [>>+<<-]
+4:  >>[<+<+>>-]<
+5:  [>+>>+<<<-]
+6:  >[<+>-]>>>[-]++<
+7:  [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
+8:  [>+<-]
+9:  >[<+<+>>-]<<<
+10: [>>+>>+<<<<-]
+11: >>[<<+>>-]>>>[-]++<
+12: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<<.>>>>>>+][-]<[-]<<<<<
+10: >>>>>>>>>>-<<<<<<<<<<]
 ```
+
+###Datenstrukutur
+Bei "größeren" Programmen in Brainfuck empfiehlt es sich, das Memoryarray klar zu strukturieren und einzuteilen, welche Bedeutung Zellen haben werden.
+
+![MemoryLayout](memoryLayout.png)
+
+###Erklärung
+![MemoryLayout](layout1.png)
+```
+1: +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
+```
+In der ersten Zeile des Programms wird der Memoryarray initiiert. Die Zellen "Zahl 1" und "Zahl 2" werden jeweils auf 1 gesetzt, um die Fibonacci Reihe zu beginnen. Die Zelle "Index" bekommt den Wert 14. Dies lässt die Schleife im Programm 14 Mal laufen, die benötigte Anzahl um alle gesuchten Zahlen zu errechnen.
+
+![MemoryLayout](layout2.png)
+![MemoryLayout](layout3.png)
+```
+3: [>>+<<-]
+4: >>[<+<+>>-]<
+```
+Um einen Wert in BrainFuck zu kopieren, muss er zuerst in eine andere Zelle bewegt werden. Um die Zahlen zu addieren, wird "Zahl 1" also zuerst in die "Kopie" Zelle kopiert, und dann zurück zu ihrer ursprünglichen Zelle, wobei sie auch zu "Zahl 1" addiert wird.
+
+```
+5: [>+>>+<<<-]
+```
+![MemoryLayout](layout4.png)
+
+```
+6: >[<+>-]>>>[-]++<
+```
+![MemoryLayout](layout5.png)
+
+```
+7: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
+```
+![MemoryLayout](layout6.png)
 
 ---
 1: Anfang bzw. Ende des Arrays
@@ -191,7 +241,7 @@ Die meisten Bots werden nach dem Schema [Programmierer Nickname]_[Bot Name]. Mei
 
 
 
-[Esoterische Programmierprachen](http://esolangs.org/wiki/Esoteric_programming_language
+[Esoterische Programmierprachen](http://esolangs.org/wiki/Esoteric_programming_language)
 [INTERCAL](http://esolangs.org/wiki/INTERCAL)
 [BrainFuck](http://esolangs.org/wiki/BrainFuck)
 [ArnoldC](https://github.com/lhartikk/ArnoldC)
@@ -200,3 +250,5 @@ Die meisten Bots werden nach dem Schema [Programmierer Nickname]_[Bot Name]. Mei
 [BFJoust Webapp](http://zem.fi/bfjoust/)
 [BFJoust Visualisierung](http://codu.org/eso/bfjoust/egojsout/)
 [Original BFJoust Regeln](http://agora-notary.wikidot.com/deleted:brainfuck-joust)
+
+[Project Euler](https://projecteuler.net/)
