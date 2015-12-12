@@ -109,11 +109,84 @@ YOU HAVE BEEN TERMINATED
 | BECAUSE I'M GOING TO SAY PLEASE | If          |
 | BULLSHIT                        | Else        |
 | YOU HAVE NO RESPECT FOR LOGIC   | Endif       |
-| YOU ARE NOT YOU YOU ARE ME      | Equal To    |
-| DO IT NOW                       | Call Method |
+| YOU ARE NOT YOU YOU ARE ME      | Ist gleich  |
+| DO IT NOW                       | Methodenruf |
 
 ###Magicard!
-Programme in Magicard! sind in Form von einer Anleitung für einen Kartentrick geschrieben.
+Programme in Magicard! sind in Form einer Anleitung für einen Kartentrick geschrieben.
+
+#Code Golf und Project Euler
+Code Golf ist eine Art Wettbewerb, bei dem es das Ziel ist, einen bestimmten Vorgang so einfach und schnell wie möglich in einer Programmiersprache umzusetzen. Der Name "Code Golf" bezieht sich darauf, das das Programm mit den wenigsten Buchstaben bzw. Tastenschlägen gewinnt.
+
+###*"Playing Perl golf (fewest (key)strokes wins![sic]) with people who have lots of experience is fine, but it's not going to help much for people who are still trying to get the hang of it."*
+(https://groups.google.com/forum/#!msg/comp.lang.perl.misc/zYRU5D2IyuI/II0sSTTEl3sJ)
+##Code Golf
+
+
+##Über Project Euler
+Projekt Euler bzw. Project Euler is eine Reihe von mathematischen und informatischen Herausforderungen. Um eine Herausforderung zu lösen werden fortgeschrittene mathematische Kenntnisse benötigt. Weiters werden Programmierkenntnisse unter Beweis gestellt. Speziell bei esoterischen Programmiersprachen existiert die zusätzliche Herausforderung, ein Problem mit den Limitationen der Sprache zu lösen.
+
+###*"Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics."*
+(https://projecteuler.net/)
+
+##Problem Nummer 2
+Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist das Aufsuchen aller geraden Fibonacci-Zahlen die kleiner als 4 Millionen sind.
+
+
+##Das Programm
+```
+1:  +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
+2:  [<<<<<<<<<<
+3:  [>>+<<-]
+4:  >>[<+<+>>-]<
+5:  [>+>>+<<<-]
+6:  >[<+>-]>>>[-]++<
+7:  [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
+8:  [>+<-]
+9:  >[<+<+>>-]<<<
+10: [>>+>>+<<<<-]
+11: >>[<<+>>-]>>>[-]++<
+12: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<<.>>>>>>+][-]<[-]<<<<<
+10: >>>>>>>>>>-]
+```
+
+###Datenstrukutur
+Bei "größeren" Programmen in Brainfuck empfiehlt es sich, das Memoryarray klar zu strukturieren und einzuteilen, welche Bedeutung Zellen haben werden. Dabei kann die Bedeutung bestimmter Zellen sich während des Ablaufs des Programms ändern.
+
+![MemoryLayout](memoryLayout.png)
+
+###Erklärung
+![MemoryLayout](layout1.png)
+```
+1: +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
+```
+In der ersten Zeile des Programms werden bestimmten Zellen im Array Werte zugewiesen. Die Zellen "Zahl 1" und "Zahl 2" werden jeweils auf 1 gesetzt, um die Fibonacci Reihe zu beginnen. Die Zelle "Index" bekommt den Wert 14. Dies lässt die Schleife im Programm 14 Mal laufen, die benötigte Anzahl um alle gesuchten Zahlen zu errechnen.
+
+![MemoryLayout](layout2.png)
+![MemoryLayout](layout3.png)
+```
+3: [>>+<<-]
+4: >>[<+<+>>-]<
+```
+Um einen Wert in BrainFuck zu bewegen wird normalerweise eine einfache Schleife verwendet ```[>+<-]```. Diese Schleife subtrahiert 1 von einer Zelle und addiert 1 zu einer Anderen, bis der Wert von der ersten Zelle 0 ist. Um einen Wert zu kopieren, d.h. ihn zu verdoppeln, muss er zuerst in eine andere Zelle bewegt werden, und dann zurück auf seine ursprüngliche Zelle sowie die Zellen, auf welche der Wert kopiert werden soll. Dieser Vorgang passiert in den Zeilen 3 und 4 meines Programms. Dies hat den Effekt, das der Wert von Zahl 1 zu Zahl 2 addiert wird, um die Fibonacci folge zu bilden.
+
+![MemoryLayout](layout4.png)
+![MemoryLayout](layout5.png)
+```
+5: [>+>>+<<<-]
+6: >[<+>-]>>>[-]++<
+```
+Der selbe Algorithmus wird in Zeile 5 und 6 verwendet. Hier wird das Ergebnis der Addition aus Zeilen 3 und 4, also die nächste Zahl in der Fibonacci Reihe, in die Zelle n kopiert. In Zeile 6 wird auch der Wert der Zelle d auf 2 gesetzt.
+
+![MemoryLayout](layout6.png)
+```
+7: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
+```
+In der Fragestellung wird nach Fibonaccizahlen gefragt die gerade sind. Um herauszufinden ob eine Zahl gerade ist, wird der Rest der Division mit 2 berechnet. Ist dieser 1, ist die Zahl ungerade, bei 0 ist die Zahl gerade. Um dies in BrainFuck umzusetzen, wird der *divmod Algorithmus* angewandt. Dieser Vorgang berechnet Modulo, und Division der Zellen n und d, und speichert die Ergebnisse der unterschiedlichen Rechnungen in den 3 folgenden Zellen. Falls die Zahl gerade ist, wird sie vom Programm ausgegeben.
+
+Der Zweite Teil der Schleife wiederholt das selbe Prinzip, mit dem unterschied das Zahl 2 zu Zahl 1 addiert wird.
+
+Dieser Vorgang wird 14 mal wiederholt, bis zur Fibonacci Zahl 
 
 #BFJoust
 
@@ -169,71 +242,6 @@ Die meisten Bots werden nach dem Schema [Programmierer Nickname]_[Bot Name]. Mei
 | quintopia_poke     | 21/42 (Unentschieden)                          |
 | guestbot_test      | 17/42 (Besiegt)                                |
 | ais523_shudderlock |  4/42 (Besiegt)                                |
-
-
-#Project Euler
-
-##Über das Projekt
-Projekt Euler bzw. Project Euler is eine Reihe von mathematischen und informatischen Herausforderungen. Um eine Herausforderung zu lösen werden fortgeschrittene mathematische Kenntnisse benötigt. Weiters werden Programmierkenntnisse unter Beweis gestellt. Bei *Code Golf* werden Herausforderungen in unterschiedlichen Programmiersprachen möglichst effizient gelöst. Speziell bei esoterischen Programmiersprachen existiert die zusätzliche Herausforderung, ein Problem mit den Limitationen der Sprache zu lösen.
-
-###*"Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics."*
-(https://projecteuler.net/)
-
-##Problem Nummer 2
-Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist das Aufsuchen aller geraden Fibonacci-Zahlen die kleiner als 4 Millionen sind.
-
-
-##Das Programm
-```
-1:  +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
-2:  [
-3:  [>>+<<-]
-4:  >>[<+<+>>-]<
-5:  [>+>>+<<<-]
-6:  >[<+>-]>>>[-]++<
-7:  [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
-8:  [>+<-]
-9:  >[<+<+>>-]<<<
-10: [>>+>>+<<<<-]
-11: >>[<<+>>-]>>>[-]++<
-12: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<<.>>>>>>+][-]<[-]<<<<<
-10: >>>>>>>>>>-<<<<<<<<<<]
-```
-
-###Datenstrukutur
-Bei "größeren" Programmen in Brainfuck empfiehlt es sich, das Memoryarray klar zu strukturieren und einzuteilen, welche Bedeutung Zellen haben werden.
-
-![MemoryLayout](memoryLayout.png)
-
-###Erklärung
-![MemoryLayout](layout1.png)
-```
-1: +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
-```
-In der ersten Zeile des Programms wird der Memoryarray initiiert. Die Zellen "Zahl 1" und "Zahl 2" werden jeweils auf 1 gesetzt, um die Fibonacci Reihe zu beginnen. Die Zelle "Index" bekommt den Wert 14. Dies lässt die Schleife im Programm 14 Mal laufen, die benötigte Anzahl um alle gesuchten Zahlen zu errechnen.
-
-![MemoryLayout](layout2.png)
-![MemoryLayout](layout3.png)
-```
-3: [>>+<<-]
-4: >>[<+<+>>-]<
-```
-Um einen Wert in BrainFuck zu kopieren, muss er zuerst in eine andere Zelle bewegt werden. Um die Zahlen zu addieren, wird "Zahl 1" also zuerst in die "Kopie" Zelle kopiert, und dann zurück zu ihrer ursprünglichen Zelle, wobei sie auch zu "Zahl 1" addiert wird.
-
-```
-5: [>+>>+<<<-]
-```
-![MemoryLayout](layout4.png)
-
-```
-6: >[<+>-]>>>[-]++<
-```
-![MemoryLayout](layout5.png)
-
-```
-7: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
-```
-![MemoryLayout](layout6.png)
 
 ---
 1: Anfang bzw. Ende des Arrays
