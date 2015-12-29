@@ -7,8 +7,42 @@ Esoterische Programmiersprachen, die aus den wenigsten möglichen Befehlen beste
 Beispiele: Brainfuck, Whitespace, OISC
 
 ###Neues Konzept
-Sprachen, die alternative Wege des Sprachdesigns erforschen.
-Beispiele: Befunge, Unlamda
+Sprachen, die alternative Wege des Sprachdesigns erforschen. Bei der Programmiersprache Befunge wird das Programm in einem zwei dimensionalen Raum geschrieben, und der Ablauf des Programms wird mit den Befehlen *<>^v* in eine Richtung "gelenkt". Mit dem *p* Befehl kann sich das Programm selbst verändern, während es abläuft.
+```befunge
+2>:3g" "-!v\  g30          <
+ |!`"O":+1_:.:03p>03g+:"O"`|
+ @               ^  p3\" ":<
+2 234567890123456789012345678901234567890123456789012345678901234567890123456789
+```
+Dieses Programm ist eine Befunge Variante des "Sieb des Eratosthenes". Es gibt mehrere Interpreter für Befunge, unter anderem auch eine Befunge Version.
+```befunge
+028p038p108p018pv
+     vp91+56p900<       v_v#!-+1"!":<                 >:"<"-!#v_:"^"-!#v_  v
+     >"*"09g:19g\19gg29p p 29g28g  #^_ :" "-!#v_:"v"-#^_    v
+     ^p91+g91g81p90+g90g 8 0pg91g90g92$       <    <
+                          >:         >38g7p38g1+38p^p811p800<
+                        >28g!28p                   ^p810p80-10<         <
+                                                   ^p81-10p800         <
+                                                   ^p810p801<     _v#!-">":<
+                                     ^  -"0":_v#`\+1"9":_v#` -1"0":<    #
+                                              >    #     >:"!"1+-!#v_v
+#######################>19g+\48gp                  ^      p #82!g82<
+0"!dlroW olleH">v     #              ^               g7-1g83_v#!-":":<
+               ,:     #     >$,                    ^ <      #>:"p"-!#v_v
+               ^_25*,@#   v_^#-4:_v#-3:_v#-1:_v#-2:\g7p83:-1_v#:g83<2<
+#######################   >:5-#v_v$                ^ #    0 #<
+                       ^  _v#-6< > $6      v  >$09g+48p1  >>       ^
+                                        >$0>         #             ^     <
+                                 v_                         ^
+
+                           >*                        ^     ^3_v#!-"_": <
+                                                              >:","-#v_4 ^
+                                                          ^5_v#!-"*":<
+
+                                 >                          #@          ^
+
+```
+Befunge Interpreter in Befunge
 
 ###Bizarrheit
 Das Ziel dieser Sprachen ist es, bizarr, anders, oder schwer zu verwenden zu sein.
