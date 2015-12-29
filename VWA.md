@@ -25,7 +25,7 @@ Beispiele: l33t, HQ9+
 ##Ausgewählte Sprachen
 ###INTERCAL
 INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programiersprach. INTERCAL steht für *Compiler Language With No Pronounceable Acronym*. Das Ziel der Sprache ist es, so wenige Ähnlichkeiten mit anderen normalen Programmiersprachen zu haben. Ein INTERCAL Program besteht aus einer Liste von Befehlen.
-```
+```python
 1:  DO ,1 <- #13
 2:  PLEASE DO ,1 SUB #1 <- #238
 3:  DO ,1 SUB #2 <- #108
@@ -63,7 +63,7 @@ BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein
 |   ]    | Springt zum passenden [ im Programm, falls der Wert an dem Pointer nicht 0 ist |
 
 
-```
+```brainfuck
 >>++++<---
 ```
 
@@ -71,7 +71,7 @@ BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein
 
 In der originalen Implementation des BrainFuck Interpreters und den meißten folgenden repräsentiert ein Wert ein ASCII Zeichen. Wird ein Wert gedruckt, wird nicht sein Zahlenwert, sondern ein ASCII Zeichen ausgegeben. Dieses Programm druckt so die Worte "Hello World!".
 
-```
+```brainfuck
 1:  ++++++++
 2:  [
 3:  >++++
@@ -209,7 +209,7 @@ Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist das Auf
 
 
 ##Das Programm
-```
+```brainfuck
 1:  +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
 2:  [<<<<<<<<<<
 3:  [>>+<<-]
@@ -227,19 +227,26 @@ Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist das Auf
 
 ###Datenstrukutur
 Bei "größeren" Programmen in Brainfuck empfiehlt es sich, das Memoryarray klar zu strukturieren und einzuteilen, welche Bedeutung Zellen haben werden. Dabei kann die Bedeutung bestimmter Zellen sich während des Ablaufs des Programms ändern.
+####Benötigte Zellen
+Zur Berechnung der Fibonacci Zahlen werden drei Zellen benötigt. Die ersten zwei Zellen werden zum Speichern der Fibonacci Zahlen verwendet, die immer gegenseitig addiert werden. Eine dritte Zelle wird als Zwischenspeicher für die Zahl verwendet, die zu der anderen addiert werden soll.
+Um festzustellen ob die Zahl gerade ist, wird der DivMod-Algorithmus verwendet. Dieser Algorithmus wird benötigt, um in BrainFuck den Modulo bzw. die Division von 2 Zahlen zu berechnen.
+```brainfuck
+[->+>-[>+>>]>[+[-<+>]>+>>]<<<<<<]
+```
+Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhaltet die Zahl die dividiert werden soll, also die gerade berechnete Fibonaccizahl. In der Zelle d wird der Divisor gespeichert. Um zu testen, ob eine Zahl gerade ist, wird sie mit 2 dividiert und der Rest der Division getestet. Der Algorithmus speichert die ERgebnisse der Berechnungen in den nächsten 3 Zellen.
 
 ![MemoryLayout](memoryLayout.png)
 
 ###Erklärung
 ![MemoryLayout](layout1.png)
-```
+```brainfuck
 1: +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
 ```
 In der ersten Zeile des Programms werden bestimmten Zellen im Array Werte zugewiesen. Die Zellen "Zahl 1" und "Zahl 2" werden jeweils auf 1 gesetzt, um die Fibonacci Reihe zu beginnen. Die Zelle "Index" bekommt den Wert 14. Dies lässt die Schleife im Programm 14 Mal laufen, die benötigte Anzahl um alle gesuchten Zahlen zu errechnen.
 
 ![MemoryLayout](layout2.png)
 ![MemoryLayout](layout3.png)
-```
+```brainfuck
 3: [>>+<<-]
 4: >>[<+<+>>-]<
 ```
@@ -247,14 +254,14 @@ Um einen Wert in BrainFuck zu bewegen wird normalerweise eine einfache Schleife 
 
 ![MemoryLayout](layout4.png)
 ![MemoryLayout](layout5.png)
-```
+```brainfuck
 5: [>+>>+<<<-]
 6: >[<+>-]>>>[-]++<
 ```
 Der selbe Algorithmus wird in Zeile 5 und 6 verwendet. Hier wird das Ergebnis der Addition aus Zeilen 3 und 4, also die nächste Zahl in der Fibonacci Reihe, in die Zelle n kopiert. In Zeile 6 wird auch der Wert der Zelle d auf 2 gesetzt.
 
 ![MemoryLayout](layout6.png)
-```
+```brainfuck
 7: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
 ```
 In der Fragestellung wird nach Fibonaccizahlen gefragt die gerade sind. Um herauszufinden ob eine Zahl gerade ist, wird der Rest der Division mit 2 berechnet. Ist dieser 1, ist die Zahl ungerade, bei 0 ist die Zahl gerade. Um dies in BrainFuck umzusetzen, wird der *divmod Algorithmus* angewandt. Dieser Vorgang berechnet Modulo, und Division der Zellen n und d, und speichert die Ergebnisse der unterschiedlichen Rechnungen in den 3 folgenden Zellen. Falls die Zahl gerade ist, wird sie vom Programm ausgegeben.
@@ -269,7 +276,7 @@ Dieser Vorgang wird 14 mal wiederholt, bis zur Fibonacci Zahl 3.524.578, der let
 BFJoust ist ein von Kerim Aydin entworfenes Spiel, welches auf "Capture the Flag"-ähnlichen Regeln basiert. Die Regeln wurden zum ersten Mal am 6. Jänner 2009 veröffentlicht. Das Spiel wird von zwei Bots (geschrieben in BrainFuck) gespielt, die auf einem geteilten Array versuchen, die gengerische Flag^1^ von 127 auf 0 zu setzten. Um Bots lesbarer zu machen wird eine Art Preprocessor verwendet, der die Zeichen `()*{}%` verwendet. `(>+)*5` wird zum Beispiel zu `>+>+>+>+>+` verarbeitet.
 
 ##Regeln
-Zu Beginn des Spiels wird das "Schlachtfeld" generiert. Es besteht aus einem Array mit einer zufällignen Länge zwischen 10 und 30 Elementen. Jedes Element ist ein 8 bit integer, und kann die Werte -127 bis 127 annehmen. Bei Spielstart werden die Flags auf 127 gesetzt, die restlichen Elemente auf 0. Ziel des Spiels bzw. der Bots ist es, die gegnerische Flag auf 0 zu reduzieren. Der Bot gewinnt, falls die gegnerische Flag für 2 Züge zu 0 gesetzt ist. Bewegt sich ein Bot über die gegnerische Flagge hinweg, verlässt also den Array, führt er keine weiteren Befehle mehr aus und wartet das Ende des Spiels ab. Falls ein Element mit dem Wert -127 reduziert wird, nimmt es den Wert 127 an, ein Element mit dem Wert 127 nimmt beim inkrementieren den Wert -127 an. Die meisten Spielprogramme lassen die beiden Bots auf jeder möglichen Spielfeldlänge (10-30) einmal Spielen und ermitteln so den insgesamt besseren Bot.
+Zu Beginn des Spiels wird das "Schlachtfeld" generiert. Es besteht aus einem Array mit einer zufällignen Länge zwischen 10 und 30 Elementen. Jedes Element ist ein 8 bit integer, und kann die Werte -127 bis 127 annehmen. Bei Spielstart werden die Flags auf 127 gesetzt, die restlichen Elemente auf 0. Ziel des Spiels bzw. der Bots ist es, die gegnerische Flag auf 0 zu reduzieren. Der Bot gewinnt, falls die gegnerische Flag für 2 Züge zu 0 gesetzt ist. Bewegt sich ein Bot über die gegnerische Flagge hinweg, verlässt also den Array, führt er keine weiteren Befehle mehr aus und wartet das Ende des Spiels ab. Falls ein Element mit dem Wert -127 reduziert wird, nimmt es den Wert 127 an, ein Element mit dem Wert 127 nimmt beim inkrementieren den Wert -127 an. Die meisten Spielprogramme lassen die beiden Bots auf jeder möglichen Spielfeldlänge (10-30) einmal normal und einmal mit umgedrehter Polarität (d.h. + und - im Programm werden jeweils durch das Andere ersetzt) spielen und ermitteln so den insgesamt besseren Bot.
 
 ##Strategien
 Obwohl das Spiel aus einfachen Regeln aufgebaut ist, haben sich mit der Zeit viele verschiedene Stategien entwickelt.
@@ -284,6 +291,9 @@ Einer der einfachsten Rush Bots ist `(>)*9([-].>)*21`. Dieser Bot überspringt d
 ###Poke
 Das Ziel eines Poke Bots ist es, die Position des Gegners herauszufinden und Decoys direkt vor ihm aufzubauen. `(>[])*30` bewegt den Bot vorwärts bis er sich auf einem Element mit dem Wert ¬0 befindet und führt dann Code in den eckigen Klammern aus. Ein einfacher Poke Bot würde anfangen, direkt vor dem Gegner Decoys aufzubauen.
 
+###Tripwire
+Eine Tripwire ist eine Zelle die auf einen niedrigen Wert gesetzt ist. Der Bot der die Zelle als Tripwire verwendet wartet bis sie der andere Bot auf 0 gesetzt hat, und fährt erst dann mit seinem Programm fort. `+[]` ist eine einfache Tripwire. Eine Element wird auf 1 gesetzt, und der Bot wartet mit einer leeren Schleife darauf, das der Wert der Zelle 0 wird.
+
 ###Clear
 Um zu gewinnen muss die gegnerische Flag auf 0 gesetzt werden. Eine einfache Methode ist `[-]`. Dieser Code verringert eine Flag bis sie den Wert 0 annimmt. `(>)*9([-]>)*21` ist ein kompletter Clear Bot. `[-]` ist ein "two-cycle" Clear, da er für eine Reduktion 2 Schritte braucht. Ein schnellerer "one-cycle" Clear wäre `(-)*128`.
 
@@ -291,7 +301,7 @@ Um zu gewinnen muss die gegnerische Flag auf 0 gesetzt werden. Eine einfache Met
 Wiggle Clear ist eine der komplexesten Clear Methoden. Um Decoys zu verringern können sie entweder reduziert oder inkrementiert werden. Bei Decoys ist immer eine dieser Methoden schneller, z.B. ist ein Decoy mit dem Wert -3  beim Inkrementieren in drei Schritten auf dem Wert 0, wird das Decoy reduziert dauert der selbe Vorgang 252 Schritte. Um zu verhindern, dass Decoys in die "falsche Richtung" verändert werden, gibt es Wiggle Clear. `([-{ ([+{[-]}])%8}])%4>` ist ein einfacher Wiggle Clear. Der Preprocessor verarbeitet diesen Code zu `[-[-[-[-[+[+[+[+[+[+[+[+[-]]]]]]]]]]]]]>`. Bei diesem Wiggle Clear wird der Decoy zuerst um 4 verringert und anschließen um 8 erhöht. Nimmt das Element dabei 0 an bewegt sich der Bot zum nächsten Element, ansonsten wird es ohne spezielle Methode weiter reduziert. Elemente mit Werten zwischen -4 und 4 werden nach dieser Methode sehr schnell auf 0 gesetzt.
 
 ##Mein Bot
-```
+```brainfuck
 1: (>)*8+(<)*7
 2: (
 3: (-)*13>
@@ -314,15 +324,87 @@ Nachdem die Decoys gesetzt worden sind beginnt der Bot mit einem Rush, und reduz
 Um den Rush zu beschleunigen werden Elemente mit dem Wiggle Clear Algorithmus reduziert. Dieser Vorgang wird wiederholt, bis die Gegnerische Flag auf 0 gesetzt worden ist.
 
 ###Ergebnisse gegen andere Bots
-Die meisten Bots werden nach dem Schema [Nickname des Programmierers]_[Bot Name]. Mein Bot ist `helyx_FightAndFlight` benannt. Die Website http://zem.fi/bfjoust/ bietet ein WebApp an, mit dem BFJoust Bots getestet werden können. Die Ergebnisse von Spielen gegen 5 zufälligen andere Bots sind für meinen simplistischen Bot überraschend gut asugefallen.
+Die meisten Bots werden nach dem Schema [Nickname des Programmierers]_[Bot Name]. Mein Bot ist `helyx_FightAndFlight` benannt. Die Website http://zem.fi/bfjoust/ bietet ein WebApp an, mit dem BFJoust Bots getestet werden können. Die Ergebnisse von Spielen gegen 5 andere Bots sind für meinen simplistischen Bot überraschend gut ausgefallen.
 
-| Gegner Bot         | gewonnene Spiele/Spiele insgesamt (Ergebnis) |
-|--------------------|----------------------------------------------|
-| fizzie_tiny        | 40/42 (Sieg)                                 |
-| Deewiant_pendolino | 29/42 (Sieg)                                 |
-| quintopia_poke     | 21/42 (Unentschieden)                        |
-| guestbot_test      | 17/42 (Besiegt)                              |
-| ais523_shudderlock |  4/42 (Besiegt)                              |
+####Moop_Alternator
+```brainfuck
+(>+>-)*4>+(>[-][.])*21
+```
+Alternator ist ein Bot der annimmt, das der gengerische Bot Zellen entweder durch addieren oder subtrahieren auf 0 setzt. Falls Zellen abwechselnd auf 1 und -1 gesetzt sind, braucht eine Bot mit einer einfachen Clear Methode durchschnittlich 128 Züge pro Zelle. Da mein Bot Wiggle Clear verwendet werden die Decoys von diesem Bot aber schnell beseitigt.
+
+>35/42 Runden gewonnen
+
+####ccarton_AnybodyThere?
+```brainfuck
+1:  >>>+<(+)*5<(-)*5>>
+2:  [
+3:  (>[([(+)*10[-]]>)*29])*4
+4:  +
+5:  <<<<
+6:  [
+7:  >>>
+8:  (+)*5<(-)*5
+9:  <<[-]
+10:]
+11: >>>>
+12: ]
+13: ([-[(+)*10[-]]]>)*29
+```
+Diser Bot setzt zuerst in den ersten 2 Zellen kleine Decoys, und verwendet dann die dritte Zelle als Tripwire. Falls die Tripwire nicht ausgelöst wurde, bewegt sich der Bot 4 Felder nach vor und setzt weiter Decoys. Dieser Vorgang wiederholt sich, und wird nach jeder Iteration um 4 Zellen vorverlegt. Sobald ein Anzeichen des gengerischen Bots gefunden wurde (entweder ein eigenes Decoy das auf 0 gesetzt wurde, oder ein Decoy vom Gegner), beginnt der Bot mit einem einfachen Rush. Dieser Bot setzt sehr viele Decoys, die erst auf längeren Memorytapes wirklich nützlich sind. Mein Bot verliert erst ab einer Länge von 25 Zellen konsistent gegen den Bot, und gewinnt deswegen das Spiel.
+
+> 31/42 Runden gewonnen
+
+####weston_MickyV4
+```brainfuck
+++>------>->---<<<------------->------>->
+---->------------->>--->------<----------
+------<------<-<<--<------------->-------
+-<-->------>------->----------->---------
+----->-------->------->----------------[>
+[--[-[+]]]>[--[+]]-]-------[>[--[-[+]]]>[
+--[+]]-]<--<------>------->--------------
+--[>[--[-[+]]]>[--[+]]-]<--<-------------
+--------->------>->-<-----
+```
+
+MickyV4 wurde mithilfe eines genetischen Algorithmus entwickelt. Bei einem genetischen Algorithmus werden Prinzipien aus der Evolution auf Programme angewandt, und so durch Mutationen von selbst weiterentwikelt. Bei diesem Algorithmus wurde ein zufällig generierter Bot, also eine Reihe von zufälligen Befehlen, gegen 60 andere Bots getestet. Nach einem Durchgang ("Generation") wird das Programm zufällig verändert("Mutationen"). Mutationen, die den Bot verbessern werden behalten, schlecte Mutationen verworfen. Dieser Bot ist das Ergebnis von 1400 Generation. Da er zufällig generiert wurde, besitzt er keine wirkliche Strtategie und ist schwer zu verstehen. Von den ersten 21 Runden konnte mein Bot nur eine gewinnen. Bei umgedrehter Polarität werden jedoch die Decoys von MickyV4 nutzlos, da alle positive Werte haben, und von meinem Bot sehr schnell beseitigt werden. Deswegen gewann mein Bot ab der 21. Runde jede Runde.
+
+> 22 / 42 Runden gewonnen
+
+####Sylwester_BurlyBalderV3
+
+```brainfuck
+1:  >((-)*18>)*2
+2:  (->)*6
+3:  [
+4:    +[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[
+5:    (-)*18
+6:    -[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[
+7:      (-)*107
+8:      [-.]
+9:    ]]]]]]]]]]]]]]]]]]
+10:   ]]]]]]]]]]]]]]]]]]
+11: ]
+12: +
+13: ([>
+14:   [
+15:     +[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[
+16:     (-)*18
+17:     -[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[
+18:       (-)*107
+19:       [-.]
+20:     ]]]]]]]]]]]]]]]]]]
+21:     ]]]]]]]]]]]]]]]]]]
+22:   ]
+23:   --
+24: ]
+25: -
+26: )*5
+```
+
+BurlyBalder ist in zwei Pahsen aufgeteilt. Am Anfang des Spiels setzt er zwei Decoys nahe an seiner Flag, und fängt dann an den Gegner zu rushen. Die erste Schleife beinhaltet einen Clear Algorithmus für den Fall dass das Memory Tape 10 Zellen lang ist. Der restliche Code ist ein modifizierter Wiggle Clear, der nach jedem Decoy das gecleared wurde ein eigenes Decoy mit dem Wert -2 hinterlässt
+
+>10/42 Runden gewonnen
 
 ---
 1: Anfang bzw. Ende des Arrays
@@ -338,6 +420,7 @@ Die meisten Bots werden nach dem Schema [Nickname des Programmierers]_[Bot Name]
 [BFJoust Strategien](https://esolangs.org/wiki/BF_Joust_strategies)
 [BFJoust Webapp](http://zem.fi/bfjoust/)
 [BFJoust Visualisierung](http://codu.org/eso/bfjoust/egojsout/)
+[BFJoust Bots](http://codegolf.stackexchange.com/questions/36645/brainfedbotsforbattling-a-brainf-tournament)
 [Original BFJoust Regeln](http://agora-notary.wikidot.com/deleted:brainfuck-joust)
 
 [Project Euler](https://projecteuler.net/)
