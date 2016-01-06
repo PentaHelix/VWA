@@ -1,21 +1,75 @@
 #Kapitel 1
 ##Was sind esoterische Programmiersprachen?
-Esoterische Programmiersprachen sind Programmiersprachen, die nicht zur Verwendung für kommerzielle Software entwickelt worden sind, sondern um mit unkonventionellem Sprachdesign zu experimentieren oder als eine "Witz-Sprache". Esoterische Programmiersprachen werden von kleinen Online-Communities entwickelt und verwendet. Mit esoterischen Programmiersprachen werden zum Beispiel mathematische Probleme gelöst, oder für minimalistische Spiele verwendet. Die meißten esoterischen Programmiersprachen können in fünf verschiedene Kategorien eingeteilt werden.
+Esoterische Programmiersprachen sind Programmiersprachen, die nicht zur Verwendung für kommerzielle Software entwickelt worden sind, sondern unter anderem um mit unkonventionellem Sprachdesign zu experimentieren. Einige esoterische Programmiersprachen wurden auch nur aus reinem Humor Esoterische Programmiersprachen werden von verschiedenen Online-Communities entwickelt und verwendet. Mit esoterischen Programmiersprachen werden zum Beispiel mathematische und informatische Herausforderungen gelöst. Bei dem Spiel BrainFuck Joust werden Roboter(**Bots**), programmiert in einer esoterischen Programmiersprache, verwendet, die gegeneinander eine Variante von "Capture the Flag" zu spielen. Die meißten esoterischen Programmiersprachen können in fünf verschiedene Kategorien eingeteilt werden.
 
 ###Minimalismus
-Esoterische Programmiersprachen, die aus den wenigsten möglichen Befehlen bestehen. Eine minimalistische Sprache, die Turing-Complete ist, wird "Turing-Tarpit" genannt. Eine Turing-Complete Programmiersprache muss die selben Rechnung wie eine Turing Maschine berechnen können.
-Beispiele: Brainfuck, Whitespace, OISC
+Esoterische Programmiersprachen, die aus den wenigsten möglichen Befehlen bestehen. Eine minimalistische Sprache, die Turing-Complete ist, wird "Turing-Tarpit" genannt. Eine Turing-Complete Programmiersprache muss die selben Berechnung wie eine Turing Maschine berechnen können.
+
+####BrainFuck
+BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein BrainFuck Programm manipuliert einen Array (auch "Memory Tape" genannt). Jede Zelle des Arrays besitzt am Anfang des Programmablaufs den Wert 0. Ein Programm kann diesen Array mithilfe von 8 Befehlen modifizieren. Brainfuck ist Turing-Complete, und kann somit jede mathemathische Berechnung durchführen, wenn auch meißt sehr ineffizient.
+
+![Memory Tape](MemTape.png)
+
+
+|Befehl  | Beschreibung |
+|--------|--------------|
+|   >    | Bewegt den Pointer nach rechts |
+|   <    | Bewegt den Pointer nach links  |
+|   +    | Erhöht den Wert an dem Pointer |
+|   -    | Verringert den Wert an dem Pointer |
+|   .    | Druckt den Wert an dem Pointer |
+|   ,    | Speichert einen eingegebenen Wert and dem Pointer |
+|   [    | Springt zum passenden ] im Programm, falls der Wert an dem Pointer 0 ist |
+|   ]    | Springt zum passenden [ im Programm, falls der Wert an dem Pointer nicht 0 ist |
+
+Fast alle dieser Befehle können sehr leicht in anderen Programmiersprachen emuliert werden, weswegen es sehr viele Interpreter in unterschiedlichen Sprachen gibt. Für mein Project Euler Programm habe ich einen eigenen Interpreter in Python geschrieben. Um das Schreiben von BrainFuck Programmen zu erleichtern, existieren auch Compiler, die bestimmte Programme aus unterschiedlichen Programmiersprachen wie zum Beispiel C oder Java zu BrainFuck verarbeiten. Da die Befehle von BrainFuck in Funktionalität begrenzt sind, kann bei solchen Programmen nur einen Teil der jeweiligen Programmiersprache verwendet werden.
+
+```brainfuck
+>>++++<---
+```
+Dieses einfache BrainFuck Programm modifiziert zwei Zellen des "Memory Tape".
+
+![Memory Tape](BFProgram.png)
+
+In der originalen Implementation des BrainFuck Interpreters und den meißten folgenden repräsentiert ein Wert ein ASCII Zeichen. Wird ein Wert gedruckt, wird nicht sein Zahlenwert, sondern sein korrespondierendes ASCII Zeichen ausgegeben. Dieses Programm druckt so die Worte "Hello World!".
+
+```brainfuck
+1:  ++++++++
+2:  [
+3:  >++++
+4:  [
+5:  >++>+++>+++>+
+6:  <<<<-
+7:  ]
+8:  >+>+>->>+
+9:  [
+10: <
+11: ]
+12: <-
+13: ]
+14: >>.>---.+++++++..+++.>>.
+15: <-.<.+++.
+16: ------.
+17: --------.
+18: >>+.>++.
+```
+
 
 ###Neues Konzept
-Sprachen, die alternative Wege des Sprachdesigns erforschen. Bei der Programmiersprache Befunge wird das Programm in einem zwei dimensionalen Raum geschrieben, und der Ablauf des Programms wird mit den Befehlen *<>^v* in eine Richtung "gelenkt". Mit dem *p* Befehl kann sich das Programm selbst verändern, während es abläuft.
-```befunge
+Programmiersprachen, die alternative Wege des Sprachdesigns erforschen.
+
+####Befunge
+Bei der Programmiersprache Befunge wird das Programm in einem zwei dimensionalen Raum geschrieben, und der Ablauf des Programms wird mit den Befehlen *<>^v* in eine Richtung "gelenkt". Neben diesen Befehlen gibt es eine Vielzahl von Anderen, die unterschiedliche Auswirkungen auf den Ablauf des Programms haben. Mit dem *p* Befehl kann sich ein Befunge Programm sogar selbst verändern, während es abläuft.
+```cpp
 2>:3g" "-!v\  g30          <
  |!`"O":+1_:.:03p>03g+:"O"`|
  @               ^  p3\" ":<
 2 234567890123456789012345678901234567890123456789012345678901234567890123456789
 ```
-Dieses Programm ist eine Befunge Variante des "Sieb des Eratosthenes". Es gibt mehrere Interpreter für Befunge, unter anderem auch eine Befunge Version.
-```befunge
+Dieses Befunge Programm ist eine Implemententation des Sieb des Eratosthenes, und wird zur Berechnung von Primzahlen verwendet.
+
+Befunge ist Turing-complete, wodurch unter anderem dieser Befunge Interpreter möglich ist, der selbst in Befunge geschrieben ist.
+```cpp
 028p038p108p018pv
      vp91+56p900<       v_v#!-+1"!":<                 >:"<"-!#v_:"^"-!#v_  v
      >"*"09g:19g\19gg29p p 29g28g  #^_ :" "-!#v_:"v"-#^_    v
@@ -42,23 +96,12 @@ Dieses Programm ist eine Befunge Variante des "Sieb des Eratosthenes". Es gibt m
                                  >                          #@          ^
 
 ```
-Befunge Interpreter in Befunge
 
 ###Bizarrheit
 Das Ziel dieser Sprachen ist es, bizarr, anders, oder schwer zu verwenden zu sein.
-Beispiele: INTERCAL, MALBOLGE
+####INTERCAL
+INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programiersprach. INTERCAL steht für *Compiler Language With No Pronounceable Acronym*. Das Ziel der Sprache ist es, so wenige Ähnlichkeiten mit anderen normalen Programmiersprachen zu haben. Ein INTERCAL Programm ist aus einer Liste von Befehlen aufgebaut, die der Reihe nach durchgeführt werden.
 
-###Thematik
-Sprachen, die zu einem bestimmten Thema entwickelt worden sind.
-Beispiele: Shakespeare, Chef, Magicard!
-
-###Witzsprache
-Eine Sprache, die keinen besonderen Zweck hat, sondern nur als Witz entwickelt worden ist.
-Beispiele: l33t, HQ9+
-
-##Ausgewählte Sprachen
-###INTERCAL
-INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programiersprach. INTERCAL steht für *Compiler Language With No Pronounceable Acronym*. Das Ziel der Sprache ist es, so wenige Ähnlichkeiten mit anderen normalen Programmiersprachen zu haben. Ein INTERCAL Program besteht aus einer Liste von Befehlen.
 ```python
 1:  DO ,1 <- #13
 2:  PLEASE DO ,1 SUB #1 <- #238
@@ -79,57 +122,100 @@ INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programier
 ```
 Einer der größten Unterschiede zu normalen Programmiersprachen ist in diesem "Hello World" Beispiel sichtbar. Der Befehl PLEASE wird verwendet, um die Höflichkeit des Programmierers zu testen. Falls weniger als 1/3 der Befehle mit PLEASE beginnen, läuft das Programm nicht.
 
-###BrainFuck
-BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein BrainFuck Programm manipuliert einen Array (auch Memory"" Tape genannt), mithilfe von 8 Befehlen.
-
-![Memory Tape](MemTape.png)
-
+###Thematik
+Sprachen, die zu einem bestimmten Thema entwickelt worden sind.
+####Megicard!
+Die Programmiersprache Magicard! ist aus Befehlen aufgabaut, die ein Kartendeck modifizieren. Ein Magicard! Programm ähnelt deswegen einer Anleitung für einen Kartentrick.
 
 |Befehl  | Beschreibung |
 |--------|--------------|
-|   >    | Bewegt den Pointer nach rechts |
-|   <    | Bewegt den Pointer nach links  |
-|   +    | Erhöht den Wert an dem Pointer |
-|   -    | Verringert den Wert an dem Pointer |
-|   .    | Druckt den Wert an dem Pointer |
-|   ,    | Speichert einen eingegebenen Wert and dem Pointer |
-|   [    | Springt zum passenden ] im Programm, falls der Wert an dem Pointer 0 ist |
-|   ]    | Springt zum passenden [ im Programm, falls der Wert an dem Pointer nicht 0 ist |
+|   Unbox deck [number] {of [num] cards} | Das Kartendeck mit der Nummer wird zum aktuellen Deck, falls es zum ersten Mal verwendet wird, wird die Anzahl der Karten mit {of [num] cards} fetgelegt. |
+|   Rebox deck | Legt das aktuelle Kartendeck zur Seite und das davor verwendete Deck wird zum aktuellen |
+|   Shuffle {preserving [num] on [top/bottom]} | Mischt das aktuelle Deck, wobei die Reihenfolge der obersten/untersten [num] Karten erhalten bleibt |
+|   Count [num]. | Bewegt die obersten [num] Karten an das untere Ende des Decks |
+|   TA-DA! | Beendet das Programm |
+Einige ausgewählte Befehle.
 
 
-```brainfuck
->>++++<---
+```python
+Unbox deck 0 of 127 cards.
+Take packet of 127 from top.
+Repeat on next 5 decks.
+Put packet on top of deck.
+Biddle count 127 stealing when i='H'||i='e'||i='l'.
+Biddle count 127 stealing when i='l'||i='o'.
+Biddle count 127 stealing when i=' '||i='W'||i='o'||i='r'
+Biddle count 127 stealing when i='l'.
+Biddle count 127 stealing when i='d'.
+Biddle count 127 stealing when i='!'.
+Deal 12 cards flipping each one with a flourish.
+TA-DA!
+```
+Hellow World in *Magicard!*.
+
+
+
+###Humor
+Eine Sprache, die keinen besonderen Zweck hat, sondern nur als Witz entwickelt worden ist. Die Programmiersprache 
+
+####Seed
+Diese Programmiersprache basiert auf **Seeds**, also auf Anfangswerten für einen zufälligen Textgenerator. Dem Compiler generiert aus einem Seed ein zufälliges Befunge Programm. Um ein Programm in Seed zu schreiben, muss zuerst ein Befunge Programm geschrieben werden. Um von dem Text des Programms auf einen Seed zurückzuschließen, wird unglaublich viel Prozessorleistung benötigt. Die benötigte Leistung geht mit jedem weiteren Befunge Befehl exponentiell in die Höhe, ab mehr als sechs Befehlen wird das berechnen fast unmöglich.
+
+```python
+340 983247832
+```
+Dieses Seed Programm wird zu einem Befunge Programm umgewandelt, das offensichtlich keinen Sinn macht.
+```cs
+	 q
+	Z?T7yQ
+	;RyHIw*#{8).'}iN*P{u>z#ok<w\\?!KPrVO7U;b> B
+	f:rDj':T3'O~J(>BLLxj(>{5n) oM/?nwC{c(OT>Fv?=)tW*`6oL8yCI:D_%4d}:ubmL"6v'(o4^5zi{E3F+vDHk"*}a&nu=S*syIgT>MQ9_vyi'b&i^_xT"WP-"lk=#/r)8%:rG,I?'DTz<)|J]0|^LDakzrx]Gjy=^.0$R<y9#Sl,_K5y@\~z+jSlARiA6D#:gVlmb^>[MQea
+	9mUdq>MJxWO<PY%o{u:aw*rK9i\;Wt8v4$0lVRz]7rUg.#MJRRWt?M[cD{j='lz;$79J;ye
+	gDQF\/1
 ```
 
-![Memory Tape](BFProgram.png)
+Eines der einzigen berechneten Seed Programme, das funktioniert, ist `4 80814037`. Das generierte Befunge Programm zu diesem Seed ist `"h", `, welches den Buchstaben "h" druckt.
 
-In der originalen Implementation des BrainFuck Interpreters und den meißten folgenden repräsentiert ein Wert ein ASCII Zeichen. Wird ein Wert gedruckt, wird nicht sein Zahlenwert, sondern ein ASCII Zeichen ausgegeben. Dieses Programm druckt so die Worte "Hello World!".
-
-```brainfuck
-1:  ++++++++
-2:  [
-3:  >++++
-4:  [
-5:  >++>+++>+++>+
-6:  <<<<-
-7:  ]
-8:  >+>+>->>+
-9:  [
-10: <
-11: ]
-12: <-
-13: ]
-14: >>.>---.+++++++..+++.>>.
-15: <-.<.+++.
-16: ------.
-17: --------.
-18: >>+.>++.
+####Byter
+besteht aus 11 Befehlen, welche einen Pointer auf einem "Spielfeld" bewegen, und so bestimmte Zeichen drucken. Das Spielfeld ist ein 16 mal 16 großer Matrix.
+```cpp
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+  ! " # $ % & ' ( ) * + , - . /
+0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+@ A B C D E F G H I J K L M N O
+P Q R S T U V W X Y Z [ \ ] ^ _
+` a b c d e f g h i j k m l n o
+p q r s t u v w x y z { | } ~ .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
 ```
+Ein "." repräsentiert Zeichen die von Zeichensatz zu Zeichensatz unterschiedlich sind.
 
-###ArnoldC
+Der Pointer startet in der oberen linken Ecke, und wird mit Befehlen bewegt.
+
+|Befehl  | Beschreibung |
+|--------|--------------|
+|   >    | Bewegt den Pointer nach rechts, und ersetzt den Befehl mit < |
+|   <    | Bewegt den Pointer nach links, und ersetzt den Befehl mit >  |
+|   V    | Bewegt den Pointer nach unten, und ersetzt den Befehl mit A  |
+|   A    | Bewegt den Pointer nach oben, und ersetzt den Befehl mit V   |
+|   +    | Druckt das Symbol an dem Pointer und bewegt ihn nach oben    |
+|   -    | Druckt das Symbol an dem Pointer und bewegt ihn nach inten   |
+|   $    | Durckt das Symbol an dem Pointer und bewegt den Pointer zurück zur ursprünglichen Position |
+|   #    | Programm beenden |
+
+
+####ArnoldC
 Arnold C ist eine Programmiersprache, die aus Arnold Schwarzenegger Einzeilern besteht.
 
-```
+```python
 IT'S SHOWTIME
 TALK TO THE HAND "hello world"
 YOU HAVE BEEN TERMINATED
@@ -146,8 +232,6 @@ YOU HAVE BEEN TERMINATED
 | YOU ARE NOT YOU YOU ARE ME      | Ist gleich  |
 | DO IT NOW                       | Methodenruf |
 
-###Magicard!
-Programme in Magicard! sind in Form einer Anleitung für einen Kartentrick geschrieben.
 
 ##Werkzeuge zum Arbeiten mit Brainfuck
 ###Interpreter
@@ -436,7 +520,7 @@ MickyV4 wurde mithilfe eines genetischen Algorithmus entwickelt. Bei einem genet
 26: )*5
 ```
 
-BurlyBalder ist in zwei Pahsen aufgeteilt. Am Anfang des Spiels setzt er zwei Decoys nahe an seiner Flag, und fängt dann an den Gegner zu rushen. Die erste Schleife beinhaltet einen Clear Algorithmus für den Fall dass das Memory Tape 10 Zellen lang ist. Der restliche Code ist ein modifizierter Wiggle Clear, der nach jedem Decoy das gecleared wurde ein eigenes Decoy mit dem Wert -2 hinterlässt
+BurlyBalder ist in zwei Phasen aufgeteilt. Am Anfang des Spiels setzt er zwei Decoys nahe an seiner Flag, und fängt dann an den Gegner zu rushen. Die erste Schleife beinhaltet einen Clear Algorithmus für den Fall dass das Memory Tape 10 Zellen lang ist. Der restliche Code ist ein modifizierter Wiggle Clear, der nach jedem Decoy das gecleared wurde ein eigenes Decoy mit dem Wert -2 hinterlässt
 
 >10/42 Runden gewonnen
 
@@ -450,6 +534,8 @@ BurlyBalder ist in zwei Pahsen aufgeteilt. Am Anfang des Spiels setzt er zwei De
 [INTERCAL](http://esolangs.org/wiki/INTERCAL)
 [BrainFuck](http://esolangs.org/wiki/BrainFuck)
 [ArnoldC](https://github.com/lhartikk/ArnoldC)
+[Byter](http://esolangs.org/wiki/Byter)
+[Seed](https://esolangs.org/wiki/Seed)
 [BFJoust Regeln](https://esolangs.org/wiki/BF_Joust)
 [BFJoust Strategien](https://esolangs.org/wiki/BF_Joust_strategies)
 [BFJoust Webapp](http://zem.fi/bfjoust/)
