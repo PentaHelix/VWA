@@ -325,6 +325,18 @@ Projekt Euler bzw. Project Euler is eine Reihe von mathematischen und informatis
 ##Problem Nummer 2
 Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist das Aufsuchen aller geraden Fibonacci-Zahlen die kleiner als 4 Millionen sind.
 
+###Herausforderungen
+####Berechnung der Fibonacci Zahlen
+Aufgrund des minimalisteschen Designs der Programmiersprache, stehen viele gewohnte Werkzeuge normaler Programmiersprachen nicht zur Verfügung. Zur Berechnung von Fibonacci Zahlen würde in anderen Sprachen zum Beispiel eine while-Schleife verwendet werden, welche in BrainFuck nicht existiert. Um dieses Problem zu lösen verwende ich in meinem Programm eine *[]-Schleife* in dem nach jeder Iteration der Schleife eine bestimmte Zelle im Memory-tape um 1 dekrementiert wird. Sobald diese Variable den Wert Null annimmt, werden die Schleife und das Programm beendet.
+In der Schleife werden pro Iteration jeweils zwei Zahlenwerte der Reihen nach gegenseitig addiert, und das Ergebnis als nächste Fibonacci Zahl verwendet
+
+####Modulorechnung
+Um festzustellen ob eine Berechnete Fibonacci Zahl gerade ist, wird ein ALgorithmus zum berechnen des Modulos der Zahl mit 2 benötigt. Dafür wird der DivMod-Algorithmus verwendet. Dieser Algorithmus wird benötigt, um in BrainFuck den Modulo bzw. die Division von 2 Zahlen zu berechnen.
+```brainfuck
+[->+>-[>+>>]>[+[-<+>]>+>>]<<<<<<]
+```
+Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhaltet die Zahl die dividiert werden soll, also die gerade berechnete Fibonaccizahl. In der Zelle d wird der Divisor gespeichert. Um zu testen, ob eine Zahl gerade ist, wird sie mit 2 dividiert und der Rest der Division getestet. Der Algorithmus speichert die ERgebnisse der Berechnungen in den nächsten 3 Zellen.
+
 
 ##Das Programm
 ```brainfuck
@@ -344,14 +356,9 @@ Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist das Auf
 ```
 
 ###Datenstrukutur
-Bei "größeren" Programmen in Brainfuck empfiehlt es sich, das Memoryarray klar zu strukturieren und einzuteilen, welche Bedeutung Zellen haben werden. Dabei kann die Bedeutung bestimmter Zellen sich während des Ablaufs des Programms ändern.
+Bei "größeren" Programmen in BrainFuck empfiehlt es sich, das Memoryarray klar zu strukturieren und einzuteilen, welche Bedeutung Zellen haben werden. Dabei kann die Bedeutung bestimmter Zellen sich während des Ablaufs des Programms ändern.
 ####Benötigte Zellen
 Zur Berechnung der Fibonacci Zahlen werden drei Zellen benötigt. Die ersten zwei Zellen werden zum Speichern der Fibonacci Zahlen verwendet, die immer gegenseitig addiert werden. Eine dritte Zelle wird als Zwischenspeicher für die Zahl verwendet, die zu der anderen addiert werden soll.
-Um festzustellen ob die Zahl gerade ist, wird der DivMod-Algorithmus verwendet. Dieser Algorithmus wird benötigt, um in BrainFuck den Modulo bzw. die Division von 2 Zahlen zu berechnen.
-```brainfuck
-[->+>-[>+>>]>[+[-<+>]>+>>]<<<<<<]
-```
-Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhaltet die Zahl die dividiert werden soll, also die gerade berechnete Fibonaccizahl. In der Zelle d wird der Divisor gespeichert. Um zu testen, ob eine Zahl gerade ist, wird sie mit 2 dividiert und der Rest der Division getestet. Der Algorithmus speichert die ERgebnisse der Berechnungen in den nächsten 3 Zellen.
 
 ![MemoryLayout](memoryLayout.png)
 
