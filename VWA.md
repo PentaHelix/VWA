@@ -335,12 +335,12 @@ Um festzustellen ob eine Berechnete Fibonacci Zahl gerade ist, wird ein ALgorith
 ```brainfuck
 [->+>-[>+>>]>[+[-<+>]>+>>]<<<<<<]
 ```
-Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhaltet die Zahl die dividiert werden soll, also die gerade berechnete Fibonaccizahl. In der Zelle d wird der Divisor gespeichert. Um zu testen, ob eine Zahl gerade ist, wird sie mit 2 dividiert und der Rest der Division getestet. Der Algorithmus speichert die ERgebnisse der Berechnungen in den nächsten 3 Zellen.
+Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhaltet die Zahl die dividiert werden soll, also die gerade berechnete Fibonaccizahl. In der Zelle d wird der Divisor gespeichert. Um zu testen, ob eine Zahl gerade ist, wird sie mit 2 dividiert und der Rest der Division auf 0 getestet. Der Algorithmus speichert dann die Ergebnisse der Berechnungen in den nächsten 3 Zellen.
 
 
 ##Das Programm
 ```brainfuck
-1:  +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
+1:  +>+<>>>>>>>>>>++++++++++++++
 2:  [<<<<<<<<<<
 3:  [>>+<<-]
 4:  >>[<+<+>>-]<
@@ -348,11 +348,11 @@ Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhalte
 6:  >[<+>-]>>>[-]++<
 7:  [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
 8:  [>+<-]
-9:  >[<+<+>>-]<<<
+9:  >[<+<+>>-]<<
 10: [>>+>>+<<<<-]
 11: >>[<<+>>-]>>>[-]++<
 12: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<<.>>>>>>+][-]<[-]<<<<<
-10: >>>>>>>>>>-]
+13: >>>>>>>>>>-]
 ```
 
 ###Datenstrukutur
@@ -365,7 +365,7 @@ Zur Berechnung der Fibonacci Zahlen werden drei Zellen benötigt. Die ersten zwe
 ###Erklärung
 ![MemoryLayout](layout1.png)
 ```brainfuck
-1: +>+<>>>>>>>>>>++++++++++++++<<<<<<<<<<
+1: +>+<>>>>>>>>>>++++++++++++++
 ```
 In der ersten Zeile des Programms werden bestimmten Zellen im Array Werte zugewiesen. Die Zellen "Zahl 1" und "Zahl 2" werden jeweils auf 1 gesetzt, um die Fibonacci Reihe zu beginnen. Die Zelle "Index" bekommt den Wert 14. Dies lässt die Schleife im Programm 14 Mal laufen, die benötigte Anzahl um alle gesuchten Zahlen zu errechnen.
 
@@ -389,11 +389,24 @@ Der selbe Algorithmus wird in Zeile 5 und 6 verwendet. Hier wird das Ergebnis de
 ```brainfuck
 7: [->-[>+>>]>[+[-<+>]>+>>]<<<<<]>>-[<<<<<.>>>>>+][-]<[-]<<<<
 ```
-In der Fragestellung wird nach Fibonaccizahlen gefragt die gerade sind. Um herauszufinden ob eine Zahl gerade ist, wird der Rest der Division mit 2 berechnet. Ist dieser 1, ist die Zahl ungerade, bei 0 ist die Zahl gerade. Um dies in BrainFuck umzusetzen, wird der *divmod Algorithmus* angewandt. Dieser Vorgang berechnet Modulo, und Division der Zellen n und d, und speichert die Ergebnisse der unterschiedlichen Rechnungen in den 3 folgenden Zellen. Falls die Zahl gerade ist, wird sie vom Programm ausgegeben.
+In der Fragestellung wird nach Fibonaccizahlen gefragt die gerade sind. Um herauszufinden ob eine Zahl gerade ist, wird der Rest der Division mit 2 berechnet. Ist dieser 1, ist die Zahl ungerade, bei 0 ist die Zahl gerade. Falls die Zahl gerade ist, wird sie von dem Programm ausgegeben.
 
-Der Zweite Teil der Schleife wiederholt das selbe Prinzip, mit dem unterschied das Zahl 2 zu Zahl 1 addiert wird.
+Der Zweite Teil der Schleife wiederholt das selbe Prinzip, mit dem unterschied das Zahl 2 zu Zahl 1 addiert wird, und Zahl 1 als nächste Zahl in der Fibonacci Reihe verwendet wird.
 
-Dieser Vorgang wird 14 mal wiederholt, bis zur Fibonacci Zahl 3.524.578, der letzten geraden Fibonacci Zahl unter 4.000.000.
+Dieser Vorgang wird 17 mal wiederholt, bis zur Fibonacci Zahl 3.524.578, der letzten geraden Fibonacci Zahl unter 4.000.000. Das erwartete Ergebnis der Berechnungen ist eine Menge von allen geraden Fibonaccizahlen unter 4.000.000:
+
+| n    | f~n~     | n    | f~n~     | n    | f~n~       | n    | f~n~       | n    | f~n~        |
+|------|----------|------|----------|------|------------|------|------------|------|-------------|
+| *1*  |    1     | *8*  |   21     | *15* |   **610**  | *22* | 17.711     | *29* |514.229      |
+| *2*  |    1     | *9*  |   **34** | *16* |   987      | *23* | 28.657     | *30* |**832.040**  |
+| *3*  |    **2** | *10* |   55     | *17* |  1.597     | *24* | **46.368** | *31* |1.346.269    |
+| *4*  |    3     | *11* |   89     | *18* |  **2.584** | *25* | 75.025     | *32* |2.178.309    |
+| *5*  |    5     | *12* |  **144** | *19* |  4.181     | *26* |121.393     | *33* |**3.524.578**|
+| *6*  |    **8** | *13* |  233     | *20* |  6.765     | *27* |**196.418** | *34* |5.702.887    |
+| *7*  |   13     | *14* |  377     | *21* | **10.946** | *28* |317.811     | *35* |9.227.465    |
+Nach dem Ablauf des Programms in dem Python Brainfuck-Interpreter, wird diese Zahlensequenz ausgegeben, die mit dem erwarteten Ergebnis übereinstimmt:
+![Python Output](pythonOutput.png)
+
 
 #BFJoust
 
@@ -414,18 +427,18 @@ Ein Rush Bot versucht so schnell wie möglich zu der gegnerischen Flag zu kommen
 Einer der einfachsten Rush Bots ist `(>)*9([-].>)*21`. Dieser Bot überspringt die ersten 9 Elemente^2^, und setzt dann der Reihe nach jedes Element auf 0.
 
 ###Poke
-Das Ziel eines Poke Bots ist es, die Position des Gegners herauszufinden und Decoys direkt vor ihm aufzubauen. `(>[])*30` bewegt den Bot vorwärts bis er sich auf einem Element mit dem Wert ¬0 befindet und führt dann Code in den eckigen Klammern aus. Ein einfacher Poke Bot würde anfangen, direkt vor dem Gegner Decoys aufzubauen.
+Das Ziel eines Poke Bots ist es, die Position des Gegners herauszufinden und Decoys direkt vor ihm aufzubauen. Der einfache Bot `(>[])*30` bewegt sich vorwärts bis er sich auf einem Element mit dem Wert ¬0 befindet und führt dann Code in den eckigen Klammern aus. Ein einfacher Poke Bot würde anfangen, direkt vor dem Gegner Decoys aufzubauen.
 
 ###Tripwire
-Eine Tripwire ist eine Zelle die auf einen niedrigen Wert gesetzt ist. Der Bot der die Zelle als Tripwire verwendet wartet bis sie der andere Bot auf 0 gesetzt hat, und fährt erst dann mit seinem Programm fort. `+[]` ist eine einfache Tripwire. Eine Element wird auf 1 gesetzt, und der Bot wartet mit einer leeren Schleife darauf, das der Wert der Zelle 0 wird.
+Eine Tripwire ist eine Zelle die auf einen niedrigen Wert gesetzt ist. Der Bot der die Zelle als Tripwire verwendet wartet bis sie der andere Bot auf 0 gesetzt hat, und fährt erst dann mit seinem Programm fort. `+[]` ist eine einfache Tripwire. Eine Element wird auf 1 gesetzt, und der Bot wartet mit einer leeren Schleife darauf, das der Wert der Zelle 0 annimmt, ausgelöst von dem gegnerischen Bot, der die Zelle auf 0 setzt. Sobald die Tripwire ausgelöst wurde, sind der gengerische Bot und der Tripwire Bot auf der selben Zelle. Dadurch können zum Beispiel Decoys dem gegnerischen Bot genau in den Weg gesetzt werden.
 
 ###Clear
-Um zu gewinnen muss die gegnerische Flag auf 0 gesetzt werden. Eine einfache Methode ist `[-]`. Dieser Code verringert eine Flag bis sie den Wert 0 annimmt. `(>)*9([-]>)*21` ist ein kompletter Clear Bot. `[-]` ist ein "two-cycle" Clear, da er für eine Reduktion 2 Schritte braucht. Ein schnellerer "one-cycle" Clear wäre `(-)*128`.
+Um zu gewinnen muss die gegnerische Flag auf 0 gesetzt werden. Eine einfache Methode ist `[-]`. Dieser Code verringert eine Flag bis sie den Wert 0 annimmt. `(>)*9([-]>)*21` ist ein kompletter Clear Bot. `[-]` wird "two-cycle" Clear genannt, da er für jede Verringerung des Wertes in einer Zelle zwei Schritte benötigt. Um den Vorgang zu Beschleunigen wird die Schleife um das Minus entfernt. Eine solcher "one-cycle" Clear wäre zum Beispiel `(-)*128`. Da die Schleife fehlt, wird nicht nach jedem Schritt überprüft ob der Wert der Zelle 0 ist. Dadurch kann in manchen Fällen von dem Programm "verpasst" werden, dass die Zelle gecleared wurde, und der Wert immer weiter verringert werden, bis er nach 256 Schritten wieder 0 annimmt.
 
 ###Wiggle Clear
 Wiggle Clear ist eine der komplexesten Clear Methoden. Um Decoys zu verringern können sie entweder reduziert oder inkrementiert werden. Bei Decoys ist immer eine dieser Methoden schneller, z.B. ist ein Decoy mit dem Wert -3  beim Inkrementieren in drei Schritten auf dem Wert 0, wird das Decoy reduziert dauert der selbe Vorgang 252 Schritte. Um zu verhindern, dass Decoys in die "falsche Richtung" verändert werden, gibt es Wiggle Clear. `([-{ ([+{[-]}])%8}])%4>` ist ein einfacher Wiggle Clear. Der Preprocessor verarbeitet diesen Code zu `[-[-[-[-[+[+[+[+[+[+[+[+[-]]]]]]]]]]]]]>`. Bei diesem Wiggle Clear wird der Decoy zuerst um 4 verringert und anschließen um 8 erhöht. Nimmt das Element dabei 0 an bewegt sich der Bot zum nächsten Element, ansonsten wird es ohne spezielle Methode weiter reduziert. Elemente mit Werten zwischen -4 und 4 werden nach dieser Methode sehr schnell auf 0 gesetzt.
 
-##Mein Bot
+##helyx_FightAndFlight
 ```brainfuck
 1: (>)*8+(<)*7
 2: (
@@ -453,9 +466,11 @@ Die meisten Bots werden nach dem Schema [Nickname des Programmierers]_[Bot Name]
 
 ####Moop_Alternator
 ```brainfuck
-(>+>-)*4>+(>[-][.])*21
+1: (>+>-)*4
+2: >+
+3: (>[-][.])*21
 ```
-Alternator ist ein Bot der annimmt, das der gengerische Bot Zellen entweder durch addieren oder subtrahieren auf 0 setzt. Falls Zellen abwechselnd auf 1 und -1 gesetzt sind, braucht eine Bot mit einer einfachen Clear Methode durchschnittlich 128 Züge pro Zelle. Da mein Bot Wiggle Clear verwendet werden die Decoys von diesem Bot aber schnell beseitigt.
+Moop_Alternator ist darauf ausgelegt, eine Schwäche der Clearmethode eines gegnerischen Bots auszunutzen. Es wird angenommen, dass ein Bot mit seinem Clearalgorithmus alle Decoys entweder durch inkrementieren oder dekrementieren gecleared werden. Von dem Bot Moop_Alternator werden Decoys gesetzt, die abwechselnd die Werte 1 und -1 annehmen. Viele Clearalgorithmen brauchen durchschnittlich 128 Züge pro Zelle, da jede zweite Zelle einen ganzen Additionszyklus vollenden muss, bis sie wieder den Wert 0 annimmt. Da helyx_FightAndFlight Wiggle Clear verwendet werden die Decoys von diesem Bot in sehr geringer Zeit beseitigt, und die gegnerische Flag kann in den meisten Runden schnell erreicht werden.
 
 >35/42 Runden gewonnen
 
@@ -475,24 +490,24 @@ Alternator ist ein Bot der annimmt, das der gengerische Bot Zellen entweder durc
 12: ]
 13: ([-[(+)*10[-]]]>)*29
 ```
-Diser Bot setzt zuerst in den ersten 2 Zellen kleine Decoys, und verwendet dann die dritte Zelle als Tripwire. Falls die Tripwire nicht ausgelöst wurde, bewegt sich der Bot 4 Felder nach vor und setzt weiter Decoys. Dieser Vorgang wiederholt sich, und wird nach jeder Iteration um 4 Zellen vorverlegt. Sobald ein Anzeichen des gengerischen Bots gefunden wurde (entweder ein eigenes Decoy das auf 0 gesetzt wurde, oder ein Decoy vom Gegner), beginnt der Bot mit einem einfachen Rush. Dieser Bot setzt sehr viele Decoys, die erst auf längeren Memorytapes wirklich nützlich sind. Mein Bot verliert erst ab einer Länge von 25 Zellen konsistent gegen den Bot, und gewinnt deswegen das Spiel.
+Diser Bot setzt zuerst in den ersten 2 Zellen kleine Decoys, und verwendet dann die dritte Zelle als Tripwire. Falls die Tripwire nicht ausgelöst wurde, bewegt sich der Bot 4 Felder nach vor und setzt weiter Decoys. Dieser Vorgang wiederholt sich, und wird nach jeder Iteration um 4 Zellen vorverlegt. Sobald ein Anzeichen des gengerischen Bots gefunden wurde (entweder ein eigenes Decoy das auf 0 gesetzt wurde, oder ein Decoy vom Gegner), beginnt der Bot mit einem einfachen Rush. Dieser Bot setzt sehr viele Decoys, die erst auf längeren Memorytapes wirklich nützlich sind. helyx_FightAndFlight verliert erst ab einer Spielfeldlänge von 25 Zellen konsistent gegen den Bot, und gewinnt deswegen das Spiel.
 
 > 31/42 Runden gewonnen
 
 ####weston_MickyV4
 ```brainfuck
-++>------>->---<<<------------->------>->
----->------------->>--->------<----------
-------<------<-<<--<------------->-------
--<-->------>------->----------->---------
------>-------->------->----------------[>
-[--[-[+]]]>[--[+]]-]-------[>[--[-[+]]]>[
---[+]]-]<--<------>------->--------------
---[>[--[-[+]]]>[--[+]]-]<--<-------------
---------->------>->-<-----
+1: ++>------>->---<<<------------->------>->
+2: ---->------------->>--->------<----------
+3: ------<------<-<<--<------------->-------
+4: -<-->------>------->----------->---------
+5: ----->-------->------->----------------[>
+6: [--[-[+]]]>[--[+]]-]-------[>[--[-[+]]]>[
+7: --[+]]-]<--<------>------->--------------
+8: --[>[--[-[+]]]>[--[+]]-]<--<-------------
+9: --------->------>->-<-----
 ```
 
-MickyV4 wurde mithilfe eines genetischen Algorithmus entwickelt. Bei einem genetischen Algorithmus werden Prinzipien aus der Evolution auf Programme angewandt, und so durch Mutationen von selbst weiterentwikelt. Bei diesem Algorithmus wurde ein zufällig generierter Bot, also eine Reihe von zufälligen Befehlen, gegen 60 andere Bots getestet. Nach einem Durchgang ("Generation") wird das Programm zufällig verändert("Mutationen"). Mutationen, die den Bot verbessern werden behalten, schlecte Mutationen verworfen. Dieser Bot ist das Ergebnis von 1400 Generation. Da er zufällig generiert wurde, besitzt er keine wirkliche Strtategie und ist schwer zu verstehen. Von den ersten 21 Runden konnte mein Bot nur eine gewinnen. Bei umgedrehter Polarität werden jedoch die Decoys von MickyV4 nutzlos, da alle positive Werte haben, und von meinem Bot sehr schnell beseitigt werden. Deswegen gewann mein Bot ab der 21. Runde jede Runde.
+MickyV4 wurde mithilfe eines genetischen Algorithmus entwickelt. Bei einem genetischen Algorithmus werden Prinzipien aus der Evolution auf Programme angewandt, und so durch Mutationen von selbst weiterentwikelt. Bei diesem Algorithmus wurde ein zufällig generierter Bot, also eine Reihe von zufälligen Befehlen, gegen 60 andere Bots getestet. Nach einem Durchgang ("Generation") wird das Programm zufällig verändert("Mutationen"). Mutationen, die den Bot verbessern werden behalten, schlecte Mutationen verworfen. Dieser Bot ist das Ergebnis von 1400 Generation. Da er zufällig generiert wurde, besitzt er keine wirkliche Strtategie und ist schwer zu verstehen. Von den ersten 21 Runden konnte mein Bot nur eine gewinnen. Bei umgedrehter Polarität werden jedoch die Decoys von MickyV4 nutzlos, da alle positive Werte haben, und von meinem Bot sehr schnell beseitigt werden. Deswegen gewann mein Bot ab einer Spielfeldlänge von 21 Zellen jede Runde.
 
 > 22 / 42 Runden gewonnen
 
@@ -527,9 +542,176 @@ MickyV4 wurde mithilfe eines genetischen Algorithmus entwickelt. Bei einem genet
 26: )*5
 ```
 
-BurlyBalder ist in zwei Phasen aufgeteilt. Am Anfang des Spiels setzt er zwei Decoys nahe an seiner Flag, und fängt dann an den Gegner zu rushen. Die erste Schleife beinhaltet einen Clear Algorithmus für den Fall dass das Memory Tape 10 Zellen lang ist. Der restliche Code ist ein modifizierter Wiggle Clear, der nach jedem Decoy das gecleared wurde ein eigenes Decoy mit dem Wert -2 hinterlässt
+BurlyBalder ist in zwei Phasen aufgeteilt. Am Anfang des Spiels setzt er zwei Decoys nahe an seiner Flag, und fängt dann an den Gegner zu rushen. Die erste Schleife beinhaltet einen Clear Algorithmus für den Fall dass das Memory Tape 10 Zellen lang ist. Der restliche Code ist ein modifizierter Wiggle Clear, der nach jedem Decoy das gecleared wurde ein eigenes Decoy mit dem Wert -2 hinterlässt.
 
 >10/42 Runden gewonnen
+
+####LymiaAliysia_NyurokiMagicalFantasy
+```css
+	// Copyright (C) 2014 Lymia Aluysia <lymiahugs@gmail.com>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is furnished
+// to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+raw +margins "|Nyuroki Magical Fantasy by Lymia Aluysia
+              |Released under the terms of MIT license
+              |
+              |"
+
+ >>>>>>>>++<--<+<--
+ // 61 of each. Written out here to workaround a rather serious Arena.py bug.
+<+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<-------------------------------------------------------------
+<-------------------------------------------------------------
+<+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<(-)*(128-109) // Change our home flag to throw off simpler bots.
+
+// And, then let's just rush!
+@wiggleClear($neg0, $pos0, $neg1, $pos1, $neg2, $pos2) {
+  @wiggleClearPos($adjustment, $count) {
+    if($count == 0) {
+      (-)*$adjustment
+      @clearBody()
+    } else {
+      +[
+        @wiggleClearPos($adjustment, $count - 1)
+      ]
+    }
+  }
+  @wiggleClearNeg($adjustment, $count) {
+    if($count == 0) {
+      (+)*$adjustment
+      @clearBody()
+    } else {
+      -[
+        @wiggleClearNeg($adjustment, $count - 1)
+      ]
+    }
+  }
+
+  @clearBody() {
+    @clearBody() {
+      @clearBody() {
+        @clearBody() {
+          @clearBody() {
+            @clearBody() {
+              (+)*82 [[+.].]
+              @break() // In case anyone tries to beat us by locking us in our loop.
+            }
+            @wiggleClearPos(0, $pos2 - $pos1)
+          }
+          @wiggleClearNeg($neg2 + $pos1, $neg2 - $neg1)
+        }
+        @wiggleClearPos($pos1 + $neg1, $pos1 - $pos0)
+      }
+      @wiggleClearNeg($neg1 + $pos0, $neg1 - $neg0)
+    }
+    @wiggleClearPos($pos0 + $neg0, $pos0)
+  }
+  @wiggleClearNeg($neg0, $neg0)
+}
+(>)*8 // Rule of 9
+(
+  > callcc(@break) {
+    // Clear counts shamelessly adjusted to hill.
+    [@wiggleClear(3, 3, 13, 11, 30, 32)]
+  }
+  --
+)*21
+
+// ... oh screw it. Not worth the binary size.
+// Used to be (-.--.---.)*-1, but, that only earned me /1/ win. Not a big deal.
+terminate
+```
+Dieser Bot wurde von einem Programmierer nicht in Brainfuck geschrieben, sondern in einer eigen für BFJoust geschriebenen Programmiersprache namens JoustExt. Bots, die in dieser Programmiersprache geschrieben sind, müssen anschließend von einem "Transpiler" zu Brainfuck übersetzt werden, um bei BFJouse verwendet zu werden. Dieser Bot sieht übersetzt so aus:
+
+```brainfuck
+1:  >>>>>>>>++<--<+<--<++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2:  +<-------------------------------------------------------------<---------------
+3:  ----------------------------------------------<++++++++++++++++++++++++++++++++
+4:  +++++++++++++++++++++++++++++<(-)*19(>)*8(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-
+5:  [-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[
+6:  +[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-
+7:  [-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[
+8:  -[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3
+9:  +[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[
+10: -[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>
+11: [-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[
+12: -[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*
+13: 82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(
+14: -)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[
+15: +[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+
+16: [+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[
+17: +[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-
+18: [(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[
+19: +[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-
+20: [-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*
+21: 41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[
+22: (-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[
+23: -[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-
+24: [(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[
+25: -[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.]
+26: .]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[
+27: -[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+
+28: [(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[
+29: +[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+
+30: [+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16
+31: +[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+
+32: [+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[
+33: -[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+
+34: [+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[
+35: -[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-
+36: [(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+
+37: [+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-
+38: [-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[
+39: -[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-
+40: [-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82
+41: [[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)
+42: *24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[
+43: +[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+
+44: [+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[
+45: +[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(
+46: +)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[
+47: +[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]-->[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[
+48: -[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+
+49: [+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--]]]]]]]]]]]]]]]]]]]]]]]
+50: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+60: ]]]]]]]]]]]]]]]]]]]]]]]]]]--)*2]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+61: ]]]]]]]]]]]]]]]--)*3]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+62: ]]]]--)*4]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*5]]
+63: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*6]]]]]]]]]]]]]
+64: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*7]]]]]]]]]]]]]]]]]]]]]]]]
+65: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*8]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+66: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*9]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+67: ]]]]]]]]]]]]]]]]]--)*10]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+68: ]]]]]]]--)*11]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)
+69: *12]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*13]]]]]]]
+70: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*14]]]]]]]]]]]]]]]]]
+71: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*15]]]]]]]]]]]]]]]]]]]]]]]]]]]
+72: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*16]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+73: ]]]]]]]]]]]]]]]]]]]]]]]]]]--)*17]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+74: ]]]]]]]]]]]]]]]]--)*18]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+75: ]]]]]]--)*19]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*
+76: 20]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*21
+```
+Ein großer Vorteil an JouseExt ist, dass bekannte Befehle wie *if*,* else*, und* for* verwendet werden können. Dies ist zwar auch in Brainfuck möglich, aber wird sehr schnell unübersichtlich und für Menschen unlesbar. Überraschenderweise hält sich helyx_FightAndFlight sogar gegen diesen sehr komplexen Bot sehr gut, und gewinnt das Spiel. Der größte Stärke gegen LymiaAliysia_NyurokiMagicalFantasy scheinen die Decoys zu sein, die zu groß sind, um von einem Wiggle Clear schnell beseitigt zu werden.
+
+> 33/42 Runden gewonnen
 
 ---
 1: Anfang bzw. Ende des Arrays
@@ -549,5 +731,6 @@ BurlyBalder ist in zwei Phasen aufgeteilt. Am Anfang des Spiels setzt er zwei De
 [BFJoust Visualisierung](http://codu.org/eso/bfjoust/egojsout/)
 [BFJoust Bots](http://codegolf.stackexchange.com/questions/36645/brainfedbotsforbattling-a-brainf-tournament)
 [Original BFJoust Regeln](http://agora-notary.wikidot.com/deleted:brainfuck-joust)
+[JouseExt](https://github.com/Lymia/JoustExt)
 
 [Project Euler](https://projecteuler.net/)
