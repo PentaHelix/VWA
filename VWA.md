@@ -1,28 +1,27 @@
 #Kapitel 1
 ##Was sind esoterische Programmiersprachen?
-Esoterische Programmiersprachen sind Programmiersprachen, die nicht zur Verwendung für kommerzielle Software entwickelt worden sind, sondern unter anderem um mit unkonventionellem Sprachdesign zu experimentieren. Einige esoterische Programmiersprachen wurden auch nur aus reinem Humor Esoterische Programmiersprachen werden von verschiedenen Online-Communities entwickelt und verwendet. Mit esoterischen Programmiersprachen werden zum Beispiel mathematische und informatische Herausforderungen gelöst. Bei dem Spiel BrainFuck Joust werden Roboter(**Bots**), programmiert in einer esoterischen Programmiersprache, verwendet, die gegeneinander eine Variante von "Capture the Flag" zu spielen. Die meißten esoterischen Programmiersprachen können in fünf verschiedene Kategorien eingeteilt werden.
+Esoterische Programmiersprachen sind Programmiersprachen, die nicht zur Verwendung für kommerzielle Software entwickelt worden sind, sondern unter anderem um mit unkonventionellem Sprachdesign zu experimentieren. Einige esoterische Programmiersprachen wurden auch nur aus reinem Humor Esoterische Programmiersprachen werden von verschiedenen Online-Communities entwickelt und verwendet. Mit esoterischen Programmiersprachen werden zum Beispiel mathematische und informatische Herausforderungen gelöst. Bei dem Spiel BrainFuck Joust werden Roboter(**Bots**), programmiert in einer esoterischen Programmiersprache, verwendet, die gegeneinander eine Variante von "Capture the Flag" zu spielen. Die meisten esoterischen Programmiersprachen können in fünf verschiedene Kategorien eingeteilt werden.[^1]
 
 ###Minimalismus
 Esoterische Programmiersprachen, die aus den wenigsten möglichen Befehlen bestehen. Eine minimalistische Sprache, die Turing-Complete ist, wird "Turing-Tarpit" genannt. Eine Turing-Complete Programmiersprache muss die selben Berechnung wie eine Turing Maschine berechnen können.
 
 ####BrainFuck
-BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein BrainFuck Programm manipuliert einen Array (auch "Memory Tape" genannt). Jede Zelle des Arrays besitzt am Anfang des Programmablaufs den Wert 0. Ein Programm kann diesen Array mithilfe von 8 Befehlen modifizieren. Brainfuck ist Turing-Complete, und kann somit jede mathemathische Berechnung durchführen, wenn auch meißt sehr ineffizient.
+BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein BrainFuck Programm manipuliert einen Array (auch "Memory Tape" genannt). Jedes Element des Arrays besitzt am Anfang des Programmablaufs den Wert 0. Ein Brainfuck Programm kann diesen Array mithilfe von 8 Befehlen modifizieren. Brainfuck ist Turing-Complete, und kann somit jede mathemathische Berechnung durchführen, wenn auch meißt sehr ineffizient.
 
 ![Memory Tape](MemTape.png)
 
+| Befehl | Beschreibung                                                                     |
+|--------|----------------------------------------------------------------------------------|
+|   >    | Bewegt den Pointer nach rechts                                                   |
+|   <    | Bewegt den Pointer nach links                                                    |
+|   +    | Erhöht den Wert an dem Pointer                                                   |
+|   -    | Verringert den Wert an dem Pointer                                               |
+|   .    | Druckt den Wert an dem Pointer                                                   |
+|   ,    | Speichert einen eingegebenen Wert and dem Pointer                                |
+|   [    | Springt zum passenden *]* im Programm, falls der Wert an dem Pointer 0 ist       |
+|   ]    | Springt zum passenden *[* im Programm, falls der Wert an dem Pointer nicht 0 ist |
 
-|Befehl  | Beschreibung |
-|--------|--------------|
-|   >    | Bewegt den Pointer nach rechts |
-|   <    | Bewegt den Pointer nach links  |
-|   +    | Erhöht den Wert an dem Pointer |
-|   -    | Verringert den Wert an dem Pointer |
-|   .    | Druckt den Wert an dem Pointer |
-|   ,    | Speichert einen eingegebenen Wert and dem Pointer |
-|   [    | Springt zum passenden ] im Programm, falls der Wert an dem Pointer 0 ist |
-|   ]    | Springt zum passenden [ im Programm, falls der Wert an dem Pointer nicht 0 ist |
-
-Fast alle dieser Befehle können sehr leicht in anderen Programmiersprachen emuliert werden, weswegen es sehr viele Interpreter in unterschiedlichen Sprachen gibt. Für mein Project Euler Programm habe ich einen eigenen Interpreter in Python geschrieben. Um das Schreiben von BrainFuck Programmen zu erleichtern, existieren auch Compiler, die bestimmte Programme aus unterschiedlichen Programmiersprachen wie zum Beispiel C oder Java zu BrainFuck verarbeiten. Da die Befehle von BrainFuck in Funktionalität begrenzt sind, kann bei solchen Programmen nur einen Teil der jeweiligen Programmiersprache verwendet werden.
+Fast alle dieser Befehle können sehr leicht in anderen Programmiersprachen emuliert werden. Aus diesem Grund gibt es sehr viele Interpreter in unterschiedlichen Sprachen gibt. Für mein Project Euler Programm habe ich einen eigenen Interpreter in Python geschrieben. Um das Schreiben von Brainfuck Programmen zu erleichtern, existieren auch Transpiler, die bestimmte Programme aus unterschiedlichen Programmiersprachen wie zum Beispiel C oder Java zu Brainfuck verarbeiten. Da die Befehle von Brainfuck in ihrer Funktionalität begrenzt sind, müssen komplexere Befehle wie *if*, *for*, und *while* zu sehr langen Ketten aus Brainfuck-Befehlen übersetzt werden, um den selben Effekt zu erzielen.
 
 ```brainfuck
 >>++++<---
@@ -69,6 +68,7 @@ Bei der Programmiersprache Befunge wird das Programm in einem zwei dimensionalen
 Dieses Befunge Programm ist eine Implemententation des Sieb des Eratosthenes, und wird zur Berechnung von Primzahlen verwendet.
 
 Befunge ist Turing-complete, wodurch unter anderem dieser Befunge Interpreter möglich ist, der selbst in Befunge geschrieben ist.
+
 ```cpp
 028p038p108p018pv
      vp91+56p900<       v_v#!-+1"!":<                 >:"<"-!#v_:"^"-!#v_  v
@@ -100,7 +100,7 @@ Befunge ist Turing-complete, wodurch unter anderem dieser Befunge Interpreter m�
 ###Bizarrheit
 Das Ziel dieser Sprachen ist es, bizarr, anders, oder schwer zu verwenden zu sein.
 ####INTERCAL
-INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programiersprach. INTERCAL steht für *Compiler Language With No Pronounceable Acronym*. Das Ziel der Sprache ist es, so wenige Ähnlichkeiten mit anderen normalen Programmiersprachen zu haben. Ein INTERCAL Programm ist aus einer Liste von Befehlen aufgebaut, die der Reihe nach durchgeführt werden.
+INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programiersprach. INTERCAL steht für *Compiler Language With No Pronounceable Acronym*. Das Ziel der Sprache ist es, so wenige Ähnlichkeiten mit anderen normalen Programmiersprachen zu haben. Ein INTERCAL Programm ist aus einer Liste von Befehlen aufgebaut, die der Reihe nach durchgeführt werden.[^2]
 
 ```python
 1:  DO ,1 <- #13
@@ -124,7 +124,7 @@ Einer der größten Unterschiede zu normalen Programmiersprachen ist in diesem "
 
 ###Thematik
 Sprachen, die zu einem bestimmten Thema entwickelt worden sind.
-####Megicard!
+####Magicard!
 Die Programmiersprache Magicard! ist aus Befehlen aufgabaut, die ein Kartendeck modifizieren. Ein Magicard! Programm ähnelt deswegen einer Anleitung für einen Kartentrick.
 
 |Befehl  | Beschreibung |
@@ -134,6 +134,7 @@ Die Programmiersprache Magicard! ist aus Befehlen aufgabaut, die ein Kartendeck 
 |   Shuffle {preserving [num] on [top/bottom]} | Mischt das aktuelle Deck, wobei die Reihenfolge der obersten/untersten [num] Karten erhalten bleibt |
 |   Count [num]. | Bewegt die obersten [num] Karten an das untere Ende des Decks |
 |   TA-DA! | Beendet das Programm |
+
 Einige ausgewählte Befehle.
 
 
@@ -151,20 +152,38 @@ Biddle count 127 stealing when i='!'.
 Deal 12 cards flipping each one with a flourish.
 TA-DA!
 ```
-Hellow World in *Magicard!*.
+Hello World in *Magicard!*.
 
+####ArnoldC
+Arnold C ist eine Programmiersprache, die aus Arnold Schwarzenegger Einzeilern besteht. Ein ArnoldC Programm wird zu Java compiled. Die verschiedenen Befehle der Programmiersprache sind äquivalent zu Befehlen aus normalen Programmiersprachen, wurden aber zu Arnold Schwarzenegger Zitaten umbenannt. Viele andere esoterische Programmiersprachen bestehen wie ArnoldC nur aus einer Reihe von unbenannten Befehlen einer anderen Programmiersprach, wei zum Beispiel LOLCODE
 
+```python
+IT'S SHOWTIME
+TALK TO THE HAND "hello world"
+YOU HAVE BEEN TERMINATED
+```
+"IT'S SHOWTIME" und "YOU HAVE BEEN TERMINATED" signalisieren den Anfang bzw. das Ende eines ArnoldC Programms, und "TALK TO THE HAND" druckt einen Wert. 
+
+| Befehl                          | Bedeutung   |
+|---------------------------------|-------------|
+| NO PROBLEMO                     | True        |
+| I LIED                          | False       |
+| BECAUSE I'M GOING TO SAY PLEASE | If          |
+| BULLSHIT                        | Else        |
+| YOU HAVE NO RESPECT FOR LOGIC   | Endif       |
+| YOU ARE NOT YOU YOU ARE ME      | Ist gleich  |
+| DO IT NOW                       | Methodenruf |
 
 ###Humor
 Eine Sprache, die keinen besonderen Zweck hat, sondern nur als Witz entwickelt worden ist. Die Programmiersprache 
 
 ####Seed
-Diese Programmiersprache basiert auf **Seeds**, also auf Anfangswerten für einen zufälligen Textgenerator. Dem Compiler generiert aus einem Seed ein zufälliges Befunge Programm. Um ein Programm in Seed zu schreiben, muss zuerst ein Befunge Programm geschrieben werden. Um von dem Text des Programms auf einen Seed zurückzuschließen, wird unglaublich viel Prozessorleistung benötigt. Die benötigte Leistung geht mit jedem weiteren Befunge Befehl exponentiell in die Höhe, ab mehr als sechs Befehlen wird das berechnen fast unmöglich.
+Diese Programmiersprache basiert auf **Seeds**, also auf Anfangswerten für einen zufälligen Textgenerator. Dem Compiler generiert aus einem Seed ein zufälliges Befunge Programm. Um ein Programm in Seed zu schreiben, muss zuerst ein Befunge Programm geschrieben werden. Um von dem Text des Programms auf einen Seed zurückzuschließen, wird unglaublich viel Prozessorleistung benötigt. Die benötigte Leistung geht mit jedem weiteren Befunge Befehl exponentiell in die Höhe, ab mehr als sechs Befehlen wird das berechnen eines Seed Programms fast unmöglich.
 
 ```python
 340 983247832
 ```
-Dieses Seed Programm wird zu einem Befunge Programm umgewandelt, das offensichtlich keinen Sinn macht.
+Dieses Seed Programm wird von dem Seed Compiler zu einem Befunge Programm umgewandelt. Da der Seed zufällig gewählt worden ist, ist es sehr unwahrscheinlich, dass das resultierende Befunge Programm sinnvoll ist.
 ```cs
 	 q
 	Z?T7yQ
@@ -173,6 +192,7 @@ Dieses Seed Programm wird zu einem Befunge Programm umgewandelt, das offensichtl
 	9mUdq>MJxWO<PY%o{u:aw*rK9i\;Wt8v4$0lVRz]7rUg.#MJRRWt?M[cD{j='lz;$79J;ye
 	gDQF\/1
 ```
+Dies ist das berechnete Programm, welches keinen offensichtlichen Nutzen besitzt.
 
 Eines der einzigen berechneten Seed Programme, das funktioniert, ist `4 80814037`. Das generierte Befunge Programm zu diesem Seed ist `"h", `, welches den Buchstaben "h" druckt.
 
@@ -200,37 +220,18 @@ Ein "." repräsentiert Zeichen die von Zeichensatz zu Zeichensatz unterschiedlic
 
 Der Pointer startet in der oberen linken Ecke, und wird mit Befehlen bewegt.
 
-|Befehl  | Beschreibung |
-|--------|--------------|
-|   >    | Bewegt den Pointer nach rechts, und ersetzt den Befehl mit < |
-|   <    | Bewegt den Pointer nach links, und ersetzt den Befehl mit >  |
-|   V    | Bewegt den Pointer nach unten, und ersetzt den Befehl mit A  |
-|   A    | Bewegt den Pointer nach oben, und ersetzt den Befehl mit V   |
-|   +    | Druckt das Symbol an dem Pointer und bewegt ihn nach oben    |
-|   -    | Druckt das Symbol an dem Pointer und bewegt ihn nach inten   |
+|Befehl  | Beschreibung                                                                               |
+|--------|--------------------------------------------------------------------------------------------|
+|   >    | Bewegt den Pointer nach rechts, und ersetzt den Befehl mit <                               |
+|   <    | Bewegt den Pointer nach links, und ersetzt den Befehl mit >                                |
+|   V    | Bewegt den Pointer nach unten, und ersetzt den Befehl mit A                                |
+|   A    | Bewegt den Pointer nach oben, und ersetzt den Befehl mit V                                 |
+|   +    | Druckt das Symbol an dem Pointer und bewegt ihn nach oben                                  |
+|   -    | Druckt das Symbol an dem Pointer und bewegt ihn nach inten                                 |
 |   $    | Durckt das Symbol an dem Pointer und bewegt den Pointer zurück zur ursprünglichen Position |
-|   #    | Programm beenden |
+|   #    | Programm beenden                                                                           |
 
-
-####ArnoldC
-Arnold C ist eine Programmiersprache, die aus Arnold Schwarzenegger Einzeilern besteht.
-
-```python
-IT'S SHOWTIME
-TALK TO THE HAND "hello world"
-YOU HAVE BEEN TERMINATED
-```
-"IT'S SHOWTIME" und "YOU HAVE BEEN TERMINATED" signalisieren den Anfang bzw. das Ende eines ArnoldC Programms, und "TALK TO THE HAND" druckt einen Wert. Weitere Befehle:
-
-| Befehl                          | Bedeutung   |
-|---------------------------------|-------------|
-| NO PROBLEMO                     | True        |
-| I LIED                          | False       |
-| BECAUSE I'M GOING TO SAY PLEASE | If          |
-| BULLSHIT                        | Else        |
-| YOU HAVE NO RESPECT FOR LOGIC   | Endif       |
-| YOU ARE NOT YOU YOU ARE ME      | Ist gleich  |
-| DO IT NOW                       | Methodenruf |
+Ausgewählte Befunge Befehle.
 
 
 ##Werkzeuge zum Arbeiten mit Brainfuck
@@ -310,32 +311,33 @@ while i < len(code):
 Bei einer so simplistischen esoterischen Sprache muss ein Interpreter nicht sehr kompliziert sein, da er einfach der Reihe nach einfache Befehle ausführen muss. Der komplexeste Aspekt von Brainfuck sind "*[*" und "*]*", also Schleifen, da der Interpreter wissen muss, zu welcher Klammer er zurückspringen muss.
 
 #Code Golf und Project Euler
-Code Golf ist eine Art Wettbewerb, bei dem es das Ziel ist, einen bestimmten Vorgang so einfach und schnell wie möglich in einer Programmiersprache umzusetzen. Der Name "Code Golf" bezieht sich darauf, das das Programm mit den wenigsten Buchstaben bzw. Tastenschlägen gewinnt.
+Code Golf ist eine Art Sport, bei dem es das Ziel ist, einen bestimmten Vorgang so einfach und schnell wie möglich in einer Programmiersprache umzusetzen. Der Name "Code Golf" bezieht sich darauf, das das Programm mit den wenigsten Buchstaben bzw. Tastenschlägen gewinnt. Code Golf Wettbewerbe werden meistens in Online-Foren wie zum Beispiel StackExchange organisiert.
 
 ###*"Playing Perl golf (fewest (key)strokes wins![sic]) with people who have lots of experience is fine, but it's not going to help much for people who are still trying to get the hang of it."*
 (https://groups.google.com/forum/#!msg/comp.lang.perl.misc/zYRU5D2IyuI/II0sSTTEl3sJ)
 ##Code Golf
-
 ##Über Project Euler
-Projekt Euler bzw. Project Euler is eine Reihe von mathematischen und informatischen Herausforderungen. Um eine Herausforderung zu lösen werden fortgeschrittene mathematische Kenntnisse benötigt. Weiters werden Programmierkenntnisse unter Beweis gestellt. Speziell bei esoterischen Programmiersprachen existiert die zusätzliche Herausforderung, ein Problem mit den Limitationen der Sprache zu lösen.
+Projekt Euler bzw. Project Euler ist eine Serie von mathematischen und informatischen Herausforderungen. Um eine Herausforderung zu lösen werden fortgeschrittene mathematische Kenntnisse benötigt. Weiters werden Programmierkenntnisse unter Beweis gestellt. Speziell bei esoterischen Programmiersprachen existiert die zusätzliche Herausforderung, ein Problem mit den Limitationen der Sprache zu lösen.
 
 ###*"Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics."*
 (https://projecteuler.net/)
 
 ##Problem Nummer 2
-Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist das Aufsuchen aller geraden Fibonacci-Zahlen die kleiner als 4 Millionen sind.
+Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist die Programmierung eines Algorithmus, der alle geraden Fibonaccizahlen mit einem Wert der geringer als 4 Millionen ist berechnet und ausgibt.
 
 ###Herausforderungen
 ####Berechnung der Fibonacci Zahlen
-Aufgrund des minimalisteschen Designs der Programmiersprache, stehen viele gewohnte Werkzeuge normaler Programmiersprachen nicht zur Verfügung. Zur Berechnung von Fibonacci Zahlen würde in anderen Sprachen zum Beispiel eine while-Schleife verwendet werden, welche in BrainFuck nicht existiert. Um dieses Problem zu lösen verwende ich in meinem Programm eine *[]-Schleife* in dem nach jeder Iteration der Schleife eine bestimmte Zelle im Memory-tape um 1 dekrementiert wird. Sobald diese Variable den Wert Null annimmt, werden die Schleife und das Programm beendet.
-In der Schleife werden pro Iteration jeweils zwei Zahlenwerte der Reihen nach gegenseitig addiert, und das Ergebnis als nächste Fibonacci Zahl verwendet
+Aufgrund des minimalistischen Designs der Programmiersprache, stehen viele gewohnte Werkzeuge normaler Programmiersprachen nicht zur Verfügung. Zur Berechnung von Fibonacci Zahlen würde in anderen Sprachen zum Beispiel eine while-Schleife verwendet werden. Um in Brainfuck diese Werkzeuge aus anderen Programmiersprachen zu emulieren, müssen oft um einiges komplexere Alternativen verwendet werden. Um die Funktionailtät einer for-Schleife nachzuarmen verwendet das Programm eine *[]-Schleife* die nach jeder Iteration der Schleife eine bestimmte Zelle im Memoryarray um 1 verringert. Sobald diese Variable den Wert Null annimmt, bricht die Schleife ab und das Programm beendet sich.
+
+In der Schleife werden pro Iteration jeweils die nächsten zwei Zahlen in der Fibonaccireihe berechnet, indem zwei Zahlen abwechselnd miteinander addiert werden.
+
 
 ####Modulorechnung
-Um festzustellen ob eine Berechnete Fibonacci Zahl gerade ist, wird ein ALgorithmus zum berechnen des Modulos der Zahl mit 2 benötigt. Dafür wird der DivMod-Algorithmus verwendet. Dieser Algorithmus wird benötigt, um in BrainFuck den Modulo bzw. die Division von 2 Zahlen zu berechnen.
+Um festzustellen ob eine Berechnete Fibonacci Zahl gerade ist, wird ein ALgorithmus zum berechnen des Modulos der Zahl mit 2 benötigt. Dafür wird der DivMod-Algorithmus verwendet. Dieser Algorithmus wird benötigt, um in Brainfuck den Modulo bzw. die Division von 2 Zahlen zu berechnen.
 ```brainfuck
 [->+>-[>+>>]>[+[-<+>]>+>>]<<<<<<]
 ```
-Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhaltet die Zahl die dividiert werden soll, also die gerade berechnete Fibonaccizahl. In der Zelle d wird der Divisor gespeichert. Um zu testen, ob eine Zahl gerade ist, wird sie mit 2 dividiert und der Rest der Division auf 0 getestet. Der Algorithmus speichert dann die Ergebnisse der Berechnungen in den nächsten 3 Zellen.
+Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhaltet die Zahl die dividiert werden soll, also die gerade berechnete Fibonaccizahl. In der Zelle d wird der Divisor gespeichert. Um zu testen, ob eine Zahl gerade ist, wird sie mit 2 dividiert und der Rest der Division getestet. Der Algorithmus speichert die Ergebnisse der Berechnungen in den nächsten 3 Zellen. Ist das Ergebnis 0, ist die Zahl gerade.
 
 
 ##Das Programm
@@ -358,7 +360,7 @@ Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhalte
 ###Datenstrukutur
 Bei "größeren" Programmen in BrainFuck empfiehlt es sich, das Memoryarray klar zu strukturieren und einzuteilen, welche Bedeutung Zellen haben werden. Dabei kann die Bedeutung bestimmter Zellen sich während des Ablaufs des Programms ändern.
 ####Benötigte Zellen
-Zur Berechnung der Fibonacci Zahlen werden drei Zellen benötigt. Die ersten zwei Zellen werden zum Speichern der Fibonacci Zahlen verwendet, die immer gegenseitig addiert werden. Eine dritte Zelle wird als Zwischenspeicher für die Zahl verwendet, die zu der anderen addiert werden soll.
+Zur Berechnung der Fibonaccizahlen werden drei Zellen benötigt. Die ersten zwei Zellen werden zum Speichern der Fibonaccizahlen verwendet, die immer gegenseitig addiert werden. Eine dritte Zelle wird als Zwischenspeicher für die Zahl verwendet, die zu der anderen addiert werden soll. Zellen 5 bis 9 werden benötigt, um den DivMod Algorithmus zu verwenden und die Ergebnisse der Berchnungen zu Speichern. Die 10. Zelle wird von der Hauptschleife verwendet, um "mitzuzählen", wie viele Iterationen noch ablaufen müssen, bis die letzte gefragte Zahl berechnet ist.
 
 ![MemoryLayout](memoryLayout.png)
 
@@ -367,7 +369,7 @@ Zur Berechnung der Fibonacci Zahlen werden drei Zellen benötigt. Die ersten zwe
 ```brainfuck
 1: +>+<>>>>>>>>>>++++++++++++++
 ```
-In der ersten Zeile des Programms werden bestimmten Zellen im Array Werte zugewiesen. Die Zellen "Zahl 1" und "Zahl 2" werden jeweils auf 1 gesetzt, um die Fibonacci Reihe zu beginnen. Die Zelle "Index" bekommt den Wert 14. Dies lässt die Schleife im Programm 14 Mal laufen, die benötigte Anzahl um alle gesuchten Zahlen zu errechnen.
+Die erste Zeile des Programms läuft im Gegensatz zu den Anderen nur einmal ab. In ihr werden bestimmten Zellen im Array ihre anfänglichen Werte zugewiesen. Die Zellen "Zahl 1" und "Zahl 2" werden jeweils auf 1 gesetzt, um die berechnung der Fibonaccireihe zu beginnen. Die Zelle "Index" bekommt den Wert 14. Dies lässt die Schleife im Programm 14 Mal laufen, die benötigte Anzahl an Iterationen um alle gesuchten Zahlen zu errechnen.
 
 ![MemoryLayout](layout2.png)
 ![MemoryLayout](layout3.png)
@@ -404,6 +406,7 @@ Dieser Vorgang wird 17 mal wiederholt, bis zur Fibonacci Zahl 3.524.578, der let
 | *5*  |    5     | *12* |  **144** | *19* |  4.181     | *26* |121.393     | *33* |**3.524.578**|
 | *6*  |    **8** | *13* |  233     | *20* |  6.765     | *27* |**196.418** | *34* |5.702.887    |
 | *7*  |   13     | *14* |  377     | *21* | **10.946** | *28* |317.811     | *35* |9.227.465    |
+
 Nach dem Ablauf des Programms in dem Python Brainfuck-Interpreter, wird diese Zahlensequenz ausgegeben, die mit dem erwarteten Ergebnis übereinstimmt:
 ![Python Output](pythonOutput.png)
 
@@ -638,78 +641,11 @@ raw +margins "|Nyuroki Magical Fantasy by Lymia Aluysia
 // Used to be (-.--.---.)*-1, but, that only earned me /1/ win. Not a big deal.
 terminate
 ```
-Dieser Bot wurde von einem Programmierer nicht in Brainfuck geschrieben, sondern in einer eigen für BFJoust geschriebenen Programmiersprache namens JoustExt. Bots, die in dieser Programmiersprache geschrieben sind, müssen anschließend von einem "Transpiler" zu Brainfuck übersetzt werden, um bei BFJouse verwendet zu werden. Dieser Bot sieht übersetzt so aus:
+Dieser Bot wurde von einem Programmierer nicht in Brainfuck geschrieben, sondern in einer eigen für BFJoust geschriebenen Programmiersprache namens JoustExt. Bots, die in dieser Programmiersprache geschrieben sind, müssen anschließend von einem "Transpiler" zu Brainfuck übersetzt werden, um bei BFJoust verwendet zu werden. Dieser Bot sieht übersetzt so aus:
 
-```brainfuck
-1:  >>>>>>>>++<--<+<--<++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-2:  +<-------------------------------------------------------------<---------------
-3:  ----------------------------------------------<++++++++++++++++++++++++++++++++
-4:  +++++++++++++++++++++++++++++<(-)*19(>)*8(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-
-5:  [-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[
-6:  +[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-
-7:  [-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[
-8:  -[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3
-9:  +[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[
-10: -[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>
-11: [-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[
-12: -[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*
-13: 82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(
-14: -)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[
-15: +[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+
-16: [+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[
-17: +[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-
-18: [(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[
-19: +[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-
-20: [-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*
-21: 41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[
-22: (-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[
-23: -[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-
-24: [(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[
-25: -[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.]
-26: .]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[
-27: -[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+
-28: [(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[
-29: +[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+
-30: [+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16
-31: +[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+
-32: [+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[
-33: -[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+
-34: [+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[
-35: -[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-
-36: [(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+
-37: [+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-
-38: [-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[
-39: -[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-
-40: [-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82
-41: [[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)
-42: *24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[
-43: +[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(+)*16+[+[+[+
-44: [+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[+[+[+[+[+[+[
-45: +[+[+[+[+[+[+[+[+[(+)*82[[+.].]--(>[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[-[-[-[-[-[(
-46: +)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+[+[+[+[+[+[
-47: +[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]-->[-[-[-[(+)*3+[+[+[(-)*6-[-[-[-[-[
-48: -[-[-[-[-[(+)*16+[+[+[+[+[+[+[+[(-)*24-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[-[(+)*41+
-49: [+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[+[(+)*82[[+.].]--]]]]]]]]]]]]]]]]]]]]]]]
-50: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-60: ]]]]]]]]]]]]]]]]]]]]]]]]]]--)*2]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-61: ]]]]]]]]]]]]]]]--)*3]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-62: ]]]]--)*4]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*5]]
-63: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*6]]]]]]]]]]]]]
-64: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*7]]]]]]]]]]]]]]]]]]]]]]]]
-65: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*8]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-66: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*9]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-67: ]]]]]]]]]]]]]]]]]--)*10]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-68: ]]]]]]]--)*11]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)
-69: *12]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*13]]]]]]]
-70: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*14]]]]]]]]]]]]]]]]]
-71: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*15]]]]]]]]]]]]]]]]]]]]]]]]]]]
-72: ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*16]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-73: ]]]]]]]]]]]]]]]]]]]]]]]]]]--)*17]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-74: ]]]]]]]]]]]]]]]]--)*18]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
-75: ]]]]]]--)*19]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*
-76: 20]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]--)*21
-```
-Ein großer Vorteil an JouseExt ist, dass bekannte Befehle wie *if*,* else*, und* for* verwendet werden können. Dies ist zwar auch in Brainfuck möglich, aber wird sehr schnell unübersichtlich und für Menschen unlesbar. Überraschenderweise hält sich helyx_FightAndFlight sogar gegen diesen sehr komplexen Bot sehr gut, und gewinnt das Spiel. Der größte Stärke gegen LymiaAliysia_NyurokiMagicalFantasy scheinen die Decoys zu sein, die zu groß sind, um von einem Wiggle Clear schnell beseitigt zu werden.
+![Compiled JouseExt](compiled.png)
+
+Ein großer Vorteil an JoustExt ist, dass bekannte Befehle wie *if*,* else*, und *for* verwendet werden können. Dies ist zwar auch in Brainfuck möglich, aber wird sehr schnell unübersichtlich und für Menschen unlesbar. Überraschenderweise hält sich helyx_FightAndFlight sogar gegen diesen sehr komplexen Bot sehr gut, und gewinnt insgesamt das Spiel. Der größte Stärke gegen LymiaAliysia_NyurokiMagicalFantasy scheinen die Decoys zu sein, die zu groß sind, um von einem Wiggle Clear schnell beseitigt zu werden.
 
 > 33/42 Runden gewonnen
 
@@ -723,6 +659,7 @@ Ein großer Vorteil an JouseExt ist, dass bekannte Befehle wie *if*,* else*, und
 [INTERCAL](http://esolangs.org/wiki/INTERCAL)
 [BrainFuck](http://esolangs.org/wiki/BrainFuck)
 [ArnoldC](https://github.com/lhartikk/ArnoldC)
+[LOLCODE](http://esolangs.org/wiki/LOLCODE)
 [Byter](http://esolangs.org/wiki/Byter)
 [Seed](https://esolangs.org/wiki/Seed)
 [BFJoust Regeln](https://esolangs.org/wiki/BF_Joust)
@@ -734,3 +671,6 @@ Ein großer Vorteil an JouseExt ist, dass bekannte Befehle wie *if*,* else*, und
 [JouseExt](https://github.com/Lymia/JoustExt)
 
 [Project Euler](https://projecteuler.net/)
+
+[^1]: testasfnjds ionfdskjol ndsklf dnsk lofdn flkdnf lkdf nsdalfn dsklf ndsaf dnkdf ^2
+[^2]: nfioewfnkjdlsafndskl dnskjf dn fkjdsnf jdsnf iofp ndofn ofndsko pfn odkspnaf kdlsfn 
