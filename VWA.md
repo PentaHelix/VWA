@@ -1,11 +1,11 @@
-#Kapitel 1
-##Was sind esoterische Programmiersprachen?
+# Kapitel 1
+## Was sind esoterische Programmiersprachen?
 Esoterische Programmiersprachen sind Programmiersprachen, die nicht zur Verwendung für kommerzielle Software entwickelt worden sind, sondern unter anderem um mit unkonventionellem Sprachdesign zu experimentieren. Einige esoterische Programmiersprachen wurden auch nur aus reinem Humor Esoterische Programmiersprachen werden von verschiedenen Online-Communities entwickelt und verwendet. Mit esoterischen Programmiersprachen werden zum Beispiel mathematische und informatische Herausforderungen gelöst. Bei dem Spiel BrainFuck Joust werden Roboter(**Bots**), programmiert in einer esoterischen Programmiersprache, verwendet, die gegeneinander eine Variante von "Capture the Flag" zu spielen. Die meisten esoterischen Programmiersprachen können in fünf verschiedene Kategorien eingeteilt werden.[^1]
 
-###Minimalismus
+### Minimalismus
 Esoterische Programmiersprachen, die aus den wenigsten möglichen Befehlen bestehen. Eine minimalistische Sprache, die Turing-Complete ist, wird "Turing-Tarpit" genannt. Eine Turing-Complete Programmiersprache muss die selben Berechnung wie eine Turing Maschine berechnen können.
 
-####BrainFuck
+#### BrainFuck
 BrainFuck ist wahrscheinlich die bekannteste esoterische Programmiersprache. Ein BrainFuck Programm manipuliert einen Array (auch "Memory Tape" genannt). Jedes Element des Arrays besitzt am Anfang des Programmablaufs den Wert 0. Ein Brainfuck Programm kann diesen Array mithilfe von 8 Befehlen modifizieren. Brainfuck ist Turing-Complete, und kann somit jede mathemathische Berechnung durchführen, wenn auch meißt sehr ineffizient.
 
 ![Memory Tape](MemTape.png)
@@ -54,10 +54,10 @@ In der originalen Implementation des BrainFuck Interpreters und den meißten fol
 ```
 
 
-###Neues Konzept
+### Neues Konzept
 Programmiersprachen, die alternative Wege des Sprachdesigns erforschen.
 
-####Befunge
+#### Befunge
 Bei der Programmiersprache Befunge wird das Programm in einem zwei dimensionalen Raum geschrieben, und der Ablauf des Programms wird mit den Befehlen *<>^v* in eine Richtung "gelenkt". Neben diesen Befehlen gibt es eine Vielzahl von Anderen, die unterschiedliche Auswirkungen auf den Ablauf des Programms haben. Mit dem *p* Befehl kann sich ein Befunge Programm sogar selbst verändern, während es abläuft.
 ```cpp
 2>:3g" "-!v\  g30          <
@@ -97,9 +97,9 @@ Befunge ist Turing-complete, wodurch unter anderem dieser Befunge Interpreter m�
 
 ```
 
-###Bizarrheit
+### Bizarrheit
 Das Ziel dieser Sprachen ist es, bizarr, anders, oder schwer zu verwenden zu sein.
-####INTERCAL
+#### INTERCAL
 INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programiersprach. INTERCAL steht für *Compiler Language With No Pronounceable Acronym*. Das Ziel der Sprache ist es, so wenige Ähnlichkeiten mit anderen normalen Programmiersprachen zu haben. Ein INTERCAL Programm ist aus einer Liste von Befehlen aufgebaut, die der Reihe nach durchgeführt werden.[^2]
 
 ```python
@@ -122,9 +122,9 @@ INTERCAL wurde im Jahr 1972 entwickelt, und ist die erste esoterische Programier
 ```
 Einer der größten Unterschiede zu normalen Programmiersprachen ist in diesem "Hello World" Beispiel sichtbar. Der Befehl PLEASE wird verwendet, um die Höflichkeit des Programmierers zu testen. Falls weniger als 1/3 der Befehle mit PLEASE beginnen, läuft das Programm nicht.
 
-###Thematik
+### Thematik
 Sprachen, die zu einem bestimmten Thema entwickelt worden sind.
-####Magicard!
+#### Magicard!
 Die Programmiersprache Magicard! ist aus Befehlen aufgabaut, die ein Kartendeck modifizieren. Ein Magicard! Programm ähnelt deswegen einer Anleitung für einen Kartentrick.
 
 |Befehl  | Beschreibung |
@@ -154,7 +154,7 @@ TA-DA!
 ```
 Hello World in *Magicard!*.
 
-####ArnoldC
+#### ArnoldC
 Arnold C ist eine Programmiersprache, die aus Arnold Schwarzenegger Einzeilern besteht. Ein ArnoldC Programm wird zu Java compiled. Die verschiedenen Befehle der Programmiersprache sind äquivalent zu Befehlen aus normalen Programmiersprachen, wurden aber zu Arnold Schwarzenegger Zitaten umbenannt. Viele andere esoterische Programmiersprachen bestehen wie ArnoldC nur aus einer Reihe von unbenannten Befehlen einer anderen Programmiersprach, wei zum Beispiel LOLCODE
 
 ```python
@@ -174,10 +174,10 @@ YOU HAVE BEEN TERMINATED
 | YOU ARE NOT YOU YOU ARE ME      | Ist gleich  |
 | DO IT NOW                       | Methodenruf |
 
-###Humor
+### Humor
 Eine Sprache, die keinen besonderen Zweck hat, sondern nur als Witz entwickelt worden ist. Die Programmiersprache 
 
-####Seed
+#### Seed
 Diese Programmiersprache basiert auf **Seeds**, also auf Anfangswerten für einen zufälligen Textgenerator. Dem Compiler generiert aus einem Seed ein zufälliges Befunge Programm. Um ein Programm in Seed zu schreiben, muss zuerst ein Befunge Programm geschrieben werden. Um von dem Text des Programms auf einen Seed zurückzuschließen, wird unglaublich viel Prozessorleistung benötigt. Die benötigte Leistung geht mit jedem weiteren Befunge Befehl exponentiell in die Höhe, ab mehr als sechs Befehlen wird das berechnen eines Seed Programms fast unmöglich.
 
 ```python
@@ -196,7 +196,7 @@ Dies ist das berechnete Programm, welches keinen offensichtlichen Nutzen besitzt
 
 Eines der einzigen berechneten Seed Programme, das funktioniert, ist `4 80814037`. Das generierte Befunge Programm zu diesem Seed ist `"h", `, welches den Buchstaben "h" druckt.
 
-####Byter
+#### Byter
 besteht aus 11 Befehlen, welche einen Pointer auf einem "Spielfeld" bewegen, und so bestimmte Zeichen drucken. Das Spielfeld ist ein 16 mal 16 großer Matrix.
 ```cpp
 . . . . . . . . . . . . . . . .
@@ -234,8 +234,8 @@ Der Pointer startet in der oberen linken Ecke, und wird mit Befehlen bewegt.
 Ausgewählte Befunge Befehle.
 
 
-##Werkzeuge zum Arbeiten mit Brainfuck
-###Interpreter
+## Werkzeuge zum Arbeiten mit Brainfuck
+### Interpreter
 Es gibt viele verschiedene Interpreter, die in allen möglichen programmiersprachen geschrieben wurden, wie zum Besipiel JavaScript, C, Haxe, und auch BrainFuck selbst. Um ein Project Euler Problem zu lösen, habe ich einen Interpreter in Python geschrieben, mit einer leichten Abwandlung von normalen Interpretern. Um das Lösen des Problems zu ermöglichen, behandelt mein Interpreter Werte als Zahlen und druckt ihre Zahlenwerte, anstatt ihrer entsprechenden ASCII Zeichen.
 
 ```python
@@ -310,29 +310,29 @@ while i < len(code):
 
 Bei einer so simplistischen esoterischen Sprache muss ein Interpreter nicht sehr kompliziert sein, da er einfach der Reihe nach einfache Befehle ausführen muss. Der komplexeste Aspekt von Brainfuck sind "*[*" und "*]*", also Schleifen, da der Interpreter wissen muss, zu welcher Klammer er zurückspringen muss.
 
-#Code Golf und Project Euler
+# Code Golf und Project Euler
 Code Golf ist eine Art Sport, bei dem es das Ziel ist, einen bestimmten Vorgang so einfach und schnell wie möglich in einer Programmiersprache umzusetzen. Der Name "Code Golf" bezieht sich darauf, das das Programm mit den wenigsten Buchstaben bzw. Tastenschlägen gewinnt. Code Golf Wettbewerbe werden meistens in Online-Foren wie zum Beispiel StackExchange organisiert.
 
-###*"Playing Perl golf (fewest (key)strokes wins![sic]) with people who have lots of experience is fine, but it's not going to help much for people who are still trying to get the hang of it."*
+### *"Playing Perl golf (fewest (key)strokes wins![sic]) with people who have lots of experience is fine, but it's not going to help much for people who are still trying to get the hang of it."*
 (https://groups.google.com/forum/#!msg/comp.lang.perl.misc/zYRU5D2IyuI/II0sSTTEl3sJ)
-##Code Golf
-##Über Project Euler
+## Code Golf
+## Über Project Euler
 Projekt Euler bzw. Project Euler ist eine Serie von mathematischen und informatischen Herausforderungen. Um eine Herausforderung zu lösen werden fortgeschrittene mathematische Kenntnisse benötigt. Weiters werden Programmierkenntnisse unter Beweis gestellt. Speziell bei esoterischen Programmiersprachen existiert die zusätzliche Herausforderung, ein Problem mit den Limitationen der Sprache zu lösen.
 
-###*"Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics."*
+### *"Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics."*
 (https://projecteuler.net/)
 
-##Problem Nummer 2
+## Problem Nummer 2
 Die zweite in den *Project Euler* Archiven gelistete Herausforderung ist die Programmierung eines Algorithmus, der alle geraden Fibonaccizahlen mit einem Wert der geringer als 4 Millionen ist berechnet und ausgibt.
 
-###Herausforderungen
-####Berechnung der Fibonacci Zahlen
+### Herausforderungen
+#### Berechnung der Fibonacci Zahlen
 Aufgrund des minimalistischen Designs der Programmiersprache, stehen viele gewohnte Werkzeuge normaler Programmiersprachen nicht zur Verfügung. Zur Berechnung von Fibonacci Zahlen würde in anderen Sprachen zum Beispiel eine while-Schleife verwendet werden. Um in Brainfuck diese Werkzeuge aus anderen Programmiersprachen zu emulieren, müssen oft um einiges komplexere Alternativen verwendet werden. Um die Funktionailtät einer for-Schleife nachzuarmen verwendet das Programm eine *[]-Schleife* die nach jeder Iteration der Schleife eine bestimmte Zelle im Memoryarray um 1 verringert. Sobald diese Variable den Wert Null annimmt, bricht die Schleife ab und das Programm beendet sich.
 
 In der Schleife werden pro Iteration jeweils die nächsten zwei Zahlen in der Fibonaccireihe berechnet, indem zwei Zahlen abwechselnd miteinander addiert werden.
 
 
-####Modulorechnung
+#### Modulorechnung
 Um festzustellen ob eine Berechnete Fibonacci Zahl gerade ist, wird ein ALgorithmus zum berechnen des Modulos der Zahl mit 2 benötigt. Dafür wird der DivMod-Algorithmus verwendet. Dieser Algorithmus wird benötigt, um in Brainfuck den Modulo bzw. die Division von 2 Zahlen zu berechnen.
 ```brainfuck
 [->+>-[>+>>]>[+[-<+>]>+>>]<<<<<<]
@@ -340,7 +340,7 @@ Um festzustellen ob eine Berechnete Fibonacci Zahl gerade ist, wird ein ALgorith
 Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhaltet die Zahl die dividiert werden soll, also die gerade berechnete Fibonaccizahl. In der Zelle d wird der Divisor gespeichert. Um zu testen, ob eine Zahl gerade ist, wird sie mit 2 dividiert und der Rest der Division getestet. Der Algorithmus speichert die Ergebnisse der Berechnungen in den nächsten 3 Zellen. Ist das Ergebnis 0, ist die Zahl gerade.
 
 
-##Das Programm
+## Das Programm
 ```brainfuck
 1:  +>+<>>>>>>>>>>++++++++++++++
 2:  [<<<<<<<<<<
@@ -357,14 +357,14 @@ Für die berechnung des Modulos werden 5 Zellen benötigt. Die Zelle n beinhalte
 13: >>>>>>>>>>-]
 ```
 
-###Datenstrukutur
+### Datenstrukutur
 Bei "größeren" Programmen in BrainFuck empfiehlt es sich, das Memoryarray klar zu strukturieren und einzuteilen, welche Bedeutung Zellen haben werden. Dabei kann die Bedeutung bestimmter Zellen sich während des Ablaufs des Programms ändern.
-####Benötigte Zellen
+#### Benötigte Zellen
 Zur Berechnung der Fibonaccizahlen werden drei Zellen benötigt. Die ersten zwei Zellen werden zum Speichern der Fibonaccizahlen verwendet, die immer gegenseitig addiert werden. Eine dritte Zelle wird als Zwischenspeicher für die Zahl verwendet, die zu der anderen addiert werden soll. Zellen 5 bis 9 werden benötigt, um den DivMod Algorithmus zu verwenden und die Ergebnisse der Berchnungen zu Speichern. Die 10. Zelle wird von der Hauptschleife verwendet, um "mitzuzählen", wie viele Iterationen noch ablaufen müssen, bis die letzte gefragte Zahl berechnet ist.
 
 ![MemoryLayout](memoryLayout.png)
 
-###Erklärung
+### Erklärung
 ![MemoryLayout](layout1.png)
 ```brainfuck
 1: +>+<>>>>>>>>>>++++++++++++++
@@ -411,37 +411,37 @@ Nach dem Ablauf des Programms in dem Python Brainfuck-Interpreter, wird diese Za
 ![Python Output](pythonOutput.png)
 
 
-#BFJoust
+# BFJoust
 
-##Das Spiel
+## Das Spiel
 BFJoust ist ein von Kerim Aydin entworfenes Spiel, welches auf "Capture the Flag"-ähnlichen Regeln basiert. Die Regeln wurden zum ersten Mal am 6. Jänner 2009 veröffentlicht. Das Spiel wird von zwei Bots (geschrieben in BrainFuck) gespielt, die auf einem geteilten Array versuchen, die gengerische Flag^1^ von 127 auf 0 zu setzten. Um Bots lesbarer zu machen wird eine Art Preprocessor verwendet, der die Zeichen `()*{}%` verwendet. `(>+)*5` wird zum Beispiel zu `>+>+>+>+>+` verarbeitet.
 
-##Regeln
+## Regeln
 Zu Beginn des Spiels wird das "Schlachtfeld" generiert. Es besteht aus einem Array mit einer zufällignen Länge zwischen 10 und 30 Elementen. Jedes Element ist ein 8 bit integer, und kann die Werte -127 bis 127 annehmen. Bei Spielstart werden die Flags auf 127 gesetzt, die restlichen Elemente auf 0. Ziel des Spiels bzw. der Bots ist es, die gegnerische Flag auf 0 zu reduzieren. Der Bot gewinnt, falls die gegnerische Flag für 2 Züge zu 0 gesetzt ist. Bewegt sich ein Bot über die gegnerische Flagge hinweg, verlässt also den Array, führt er keine weiteren Befehle mehr aus und wartet das Ende des Spiels ab. Falls ein Element mit dem Wert -127 reduziert wird, nimmt es den Wert 127 an, ein Element mit dem Wert 127 nimmt beim inkrementieren den Wert -127 an. Die meisten Spielprogramme lassen die beiden Bots auf jeder möglichen Spielfeldlänge (10-30) einmal normal und einmal mit umgedrehter Polarität (d.h. + und - im Programm werden jeweils durch das Andere ersetzt) spielen und ermitteln so den insgesamt besseren Bot.
 
-##Strategien
+## Strategien
 Obwohl das Spiel aus einfachen Regeln aufgebaut ist, haben sich mit der Zeit viele verschiedene Stategien entwickelt.
 
-###Decoy
+### Decoy
 Ein Decoy ist ein Element, welches so verändert wird, dass der gegnerische Bot es falsch als Flag erkennt und auf 0 setzt. Durch diese Strategie wird der Bot verzögert und von der Flag ferngehalten.
 
-###Rush
+### Rush
 Ein Rush Bot versucht so schnell wie möglich zu der gegnerischen Flag zu kommen, ohne Decoys zu setzten.
 Einer der einfachsten Rush Bots ist `(>)*9([-].>)*21`. Dieser Bot überspringt die ersten 9 Elemente^2^, und setzt dann der Reihe nach jedes Element auf 0.
 
-###Poke
+### Poke
 Das Ziel eines Poke Bots ist es, die Position des Gegners herauszufinden und Decoys direkt vor ihm aufzubauen. Der einfache Bot `(>[])*30` bewegt sich vorwärts bis er sich auf einem Element mit dem Wert ¬0 befindet und führt dann Code in den eckigen Klammern aus. Ein einfacher Poke Bot würde anfangen, direkt vor dem Gegner Decoys aufzubauen.
 
-###Tripwire
+### Tripwire
 Eine Tripwire ist eine Zelle die auf einen niedrigen Wert gesetzt ist. Der Bot der die Zelle als Tripwire verwendet wartet bis sie der andere Bot auf 0 gesetzt hat, und fährt erst dann mit seinem Programm fort. `+[]` ist eine einfache Tripwire. Eine Element wird auf 1 gesetzt, und der Bot wartet mit einer leeren Schleife darauf, das der Wert der Zelle 0 annimmt, ausgelöst von dem gegnerischen Bot, der die Zelle auf 0 setzt. Sobald die Tripwire ausgelöst wurde, sind der gengerische Bot und der Tripwire Bot auf der selben Zelle. Dadurch können zum Beispiel Decoys dem gegnerischen Bot genau in den Weg gesetzt werden.
 
-###Clear
+### Clear
 Um zu gewinnen muss die gegnerische Flag auf 0 gesetzt werden. Eine einfache Methode ist `[-]`. Dieser Code verringert eine Flag bis sie den Wert 0 annimmt. `(>)*9([-]>)*21` ist ein kompletter Clear Bot. `[-]` wird "two-cycle" Clear genannt, da er für jede Verringerung des Wertes in einer Zelle zwei Schritte benötigt. Um den Vorgang zu Beschleunigen wird die Schleife um das Minus entfernt. Eine solcher "one-cycle" Clear wäre zum Beispiel `(-)*128`. Da die Schleife fehlt, wird nicht nach jedem Schritt überprüft ob der Wert der Zelle 0 ist. Dadurch kann in manchen Fällen von dem Programm "verpasst" werden, dass die Zelle gecleared wurde, und der Wert immer weiter verringert werden, bis er nach 256 Schritten wieder 0 annimmt.
 
-###Wiggle Clear
+### Wiggle Clear
 Wiggle Clear ist eine der komplexesten Clear Methoden. Um Decoys zu verringern können sie entweder reduziert oder inkrementiert werden. Bei Decoys ist immer eine dieser Methoden schneller, z.B. ist ein Decoy mit dem Wert -3  beim Inkrementieren in drei Schritten auf dem Wert 0, wird das Decoy reduziert dauert der selbe Vorgang 252 Schritte. Um zu verhindern, dass Decoys in die "falsche Richtung" verändert werden, gibt es Wiggle Clear. `([-{ ([+{[-]}])%8}])%4>` ist ein einfacher Wiggle Clear. Der Preprocessor verarbeitet diesen Code zu `[-[-[-[-[+[+[+[+[+[+[+[+[-]]]]]]]]]]]]]>`. Bei diesem Wiggle Clear wird der Decoy zuerst um 4 verringert und anschließen um 8 erhöht. Nimmt das Element dabei 0 an bewegt sich der Bot zum nächsten Element, ansonsten wird es ohne spezielle Methode weiter reduziert. Elemente mit Werten zwischen -4 und 4 werden nach dieser Methode sehr schnell auf 0 gesetzt.
 
-##helyx_FightAndFlight
+## helyx_FightAndFlight
 ```brainfuck
 1: (>)*8+(<)*7
 2: (
@@ -451,23 +451,23 @@ Wiggle Clear ist eine der komplexesten Clear Methoden. Um Decoys zu verringern k
 6: (([-{([+{[-]}])%8}])%4>)*21
 ```
 
-##Verwendete Strategien
+## Verwendete Strategien
 Mein Bot verwendet eine Kombination von unterschiedlichen Strategien
-###Decoy
+### Decoy
 In der ersten Zeilen bewegt sich der Bot 8 Elemente auf den Gegner zu, setzt ein Decoy und bewegt sich wieder auf das Element vor der eigenen Flag zurück. Dieses Decoy ist eine einfache Verteidigung gegen Poke Strategien, da der Gegner die Position des Bots viel näher einschätzt als er eigentlich ist.
 
 In den Zeilen 2 bis 5 bewegt sich der Bot 8 Elemente Vorwärts und setzt weitere Decoys mit dem Wert 13 bzw. -13.
 
-###Rush
+### Rush
 Nachdem die Decoys gesetzt worden sind beginnt der Bot mit einem Rush, und reduziert jedes Element auf 0. Im Idealfall wird der Gegnerische Bot durch die gesetzten Decoys lange genug aufgehalten, und erreicht nicht rechtzeitig die Flag.
 
-###Wiggle Clear
+### Wiggle Clear
 Um den Rush zu beschleunigen werden Elemente mit dem Wiggle Clear Algorithmus reduziert. Dieser Vorgang wird wiederholt, bis die Gegnerische Flag auf 0 gesetzt worden ist.
 
-###Ergebnisse gegen andere Bots
+### Ergebnisse gegen andere Bots
 Die meisten Bots werden nach dem Schema [Nickname des Programmierers]_[Bot Name]. Mein Bot ist `helyx_FightAndFlight` benannt. Die Website http://zem.fi/bfjoust/ bietet ein WebApp an, mit dem BFJoust Bots getestet werden können. Die Ergebnisse von Spielen gegen 5 andere Bots sind für meinen simplistischen Bot überraschend gut ausgefallen.
 
-####Moop_Alternator
+#### Moop_Alternator
 ```brainfuck
 1: (>+>-)*4
 2: >+
@@ -477,7 +477,7 @@ Moop_Alternator ist darauf ausgelegt, eine Schwäche der Clearmethode eines gegn
 
 >35/42 Runden gewonnen
 
-####ccarton_AnybodyThere?
+#### ccarton_AnybodyThere?
 ```brainfuck
 1:  >>>+<(+)*5<(-)*5>>
 2:  [
@@ -497,7 +497,7 @@ Diser Bot setzt zuerst in den ersten 2 Zellen kleine Decoys, und verwendet dann 
 
 > 31/42 Runden gewonnen
 
-####weston_MickyV4
+#### weston_MickyV4
 ```brainfuck
 1: ++>------>->---<<<------------->------>->
 2: ---->------------->>--->------<----------
@@ -514,7 +514,7 @@ MickyV4 wurde mithilfe eines genetischen Algorithmus entwickelt. Bei einem genet
 
 > 22 / 42 Runden gewonnen
 
-####Sylwester_BurlyBalderV3
+#### Sylwester_BurlyBalderV3
 
 ```brainfuck
 1:  >((-)*18>)*2
@@ -549,7 +549,7 @@ BurlyBalder ist in zwei Phasen aufgeteilt. Am Anfang des Spiels setzt er zwei De
 
 >10/42 Runden gewonnen
 
-####LymiaAliysia_NyurokiMagicalFantasy
+#### LymiaAliysia_NyurokiMagicalFantasy
 ```css
 	// Copyright (C) 2014 Lymia Aluysia <lymiahugs@gmail.com>
 //
